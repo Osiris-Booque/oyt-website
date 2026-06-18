@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --color-body: #F9F7F2;
+  --color-card: #FFFFFF;
+  --color-text-main: #354242;
+  --color-primary-action: #4A7580;
+  --color-accent: #C55A30;
+  --color-border: #E5E9E4;
+}
+
+html {
+  scroll-padding-top: 0;
+}
+
+@layer base {
+  body {
+    @apply font-sans leading-relaxed antialiased;
+    background-color: var(--color-body);
+    color: var(--color-text-main);
+    background-image: radial-gradient(circle at 10% 20%, rgba(166, 212, 160, 0.1) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, rgba(109, 143, 154, 0.08) 0%, transparent 40%);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3 {
+    @apply font-serif font-normal text-primary leading-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+  .container-narrow {
+    @apply max-w-[900px] mx-auto px-md;
+  }
+
+  .container-wide {
+    @apply max-w-[1200px] mx-auto px-md;
+  }
+
+  .section {
+    @apply py-xl md:py-xxl;
+  }
+
+  .font-display {
+    @apply font-serif;
+  }
+
+  .card {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary-action);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #3A656F;
+  }
+
+  /* ── Prose typography ─────────────────────────── */
+
+  .prose-osiris {
+    text-wrap: pretty;
+  }
+
+  .prose-osiris h2 {
+    @apply font-serif text-2xl md:text-3xl text-primary mb-md mt-xl;
+    text-wrap: balance;
+  }
+
+  .prose-osiris h3 {
+    @apply font-serif text-xl md:text-2xl text-primary mb-sm mt-lg;
+    text-wrap: balance;
+  }
+
+  .prose-osiris h4 {
+    @apply font-serif text-lg md:text-xl text-primary mb-sm mt-lg;
+    text-wrap: balance;
+  }
+
+  .prose-osiris h2 + h3,
+  .prose-osiris h3 + h4,
+  .prose-osiris h2 + p,
+  .prose-osiris h3 + p,
+  .prose-osiris h4 + p {
+    @apply mt-0;
+  }
+
+  .prose-osiris p {
+    @apply text-primary text-lg leading-[1.8] mb-md;
+  }
+
+  .prose-osiris p:last-child {
+    @apply mb-0;
+  }
+
+  .prose-osiris h2 + p,
+  .prose-osiris header + p {
+    @apply text-xl leading-[1.75];
+  }
+
+  .prose-osiris strong {
+    @apply font-bold text-primary;
+  }
+
+  .prose-osiris em {
+    @apply italic;
+  }
+
+  .prose-osiris ul {
+    @apply list-disc pl-md mb-md space-y-2 text-primary text-lg leading-[1.8];
+  }
+
+  .prose-osiris ol {
+    @apply list-decimal pl-md mb-md space-y-2 text-primary text-lg leading-[1.8];
+  }
+
+  .prose-osiris li p {
+    @apply mb-1;
+  }
+
+  .prose-osiris blockquote {
+    @apply border-l-4 border-sage-400 pl-md py-1 my-lg;
+  }
+
+  .prose-osiris blockquote p {
+    @apply text-secondary italic text-xl leading-[1.7];
+  }
+
+  .prose-osiris a {
+    @apply text-sage-dark underline decoration-sage-dark/30 underline-offset-2 hover:decoration-sage-dark hover:text-sage-500 transition-colors;
+  }
+
+  .prose-osiris img {
+    @apply max-w-full rounded-md my-lg;
+  }
+
+  .prose-osiris figure {
+    @apply my-xl;
+  }
+
+  .prose-osiris figcaption {
+    @apply text-sm text-secondary text-center mt-sm italic;
+  }
+
+  .prose-osiris hr {
+    @apply border-0 my-xl;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(166, 212, 160, 0.4) 20%,
+      rgba(166, 212, 160, 0.4) 80%,
+      transparent
+    );
+  }
+
+  .prose-osiris .subscription-widget-wrap,
+  .prose-osiris .captioned-button-wrap {
+    @apply hidden;
+  }
+}
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn .6s ease-out both;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
