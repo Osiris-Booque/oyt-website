@@ -49,9 +49,9 @@ export const NAV_PERSONAL_FAQ: NavItem[] = [
 
 export const NAV_PRIVATE_SESSION: NavItem[] = [
   { label: "Back to Personal Offerings", to: "/offerings/personal", isBack: true },
-  { label: "Yoga Therapy", to: "/offerings/private-sessions/yoga-therapy" },
-  { label: "Breathwork Coaching", to: "/offerings/private-sessions/breathwork-coaching" },
-  { label: "Integrated Practice", to: "/offerings/private-sessions/integrated-practice" },
+  { label: "The Body", to: "/offerings/private-sessions/the-body" },
+  { label: "The Mind", to: "/offerings/private-sessions/the-mind" },
+  { label: "The Soul", to: "/offerings/private-sessions/the-soul" },
 ]
 
 export const NAV_TEAM_HUB: NavItem[] = [
