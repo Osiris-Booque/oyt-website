@@ -95,7 +95,7 @@ export default function Header({
     if (link.href) {
       const isCrossPage = link.href.startsWith("/");
       return (
-        
+        <a
           key={link.label}
           href={link.href}
           onClick={(e) => {
