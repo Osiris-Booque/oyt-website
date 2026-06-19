@@ -1,11 +1,13 @@
 import { useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-function scrollToHash(hash: string) {
+function scrollToHash(hash: string, retries = 6, delay = 125) {
   const element = document.querySelector(hash);
-  if (!element) return;
-
-  element.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else if (retries > 0) {
+    setTimeout(() => scrollToHash(hash, retries - 1, delay), delay);
+  }
 }
 
 export { scrollToHash };
