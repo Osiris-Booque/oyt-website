@@ -25,7 +25,7 @@ export const NAV_OFFERINGS_HUB: NavItem[] = [
 ]
 
 export const NAV_PERSONAL_HUB: NavItem[] = [
-  { label: "Back to all Offerings", to: "#offerings", isBack: true },
+  { label: "Back to all Offerings", href: "/#offerings", isBack: true },
   { label: "Personal Programs FAQs", to: "/offerings/personal/faq" }
 ]
 
@@ -55,7 +55,7 @@ export const NAV_PRIVATE_SESSION: NavItem[] = [
 ]
 
 export const NAV_TEAM_HUB: NavItem[] = [
-  { label: "Back to all Offerings", to: "#offerings", isBack: true },
+  { label: "Back to all Offerings", href: "/#offerings", isBack: true },
   { label: "Program FAQs", to: "/offerings/team/faq" }
 ]
 
