@@ -34,7 +34,7 @@ const OUTCOMES = [
 const TESTIMONIALS = [
   { name: 'Dana M.', quote: 'After two years of back pain, this was the first thing that actually helped. Thoughtful, unhurried, completely adapted to my body.', stars: 5 },
   { name: 'Chris W.', quote: 'I came in skeptical. I left with a completely different relationship to how I move. The assessment alone was worth it.', stars: 5 },
-  { name: 'Priya S.', quote: 'Not like any yoga class I've taken before. This feels like working with someone who actually sees you.', stars: 5 },
+  { name: 'Priya S.', quote: 'Not like any yoga class I\'ve taken before. This feels like working with someone who actually sees you.', stars: 5 },
 ];
 
 function Stars({ count }) {
