@@ -34,7 +34,7 @@ const inputStyle = {
 };
 
 const ctaStyle = {
-  width: '100%', padding: '14px', background: '#2d3d35', color: '#fff',
+  width: '100%', padding: '14px', background: '#6b9e7e', color: '#fff',
   border: 'none', borderRadius: 11, fontSize: 15, fontWeight: 700,
   cursor: 'pointer', letterSpacing: '0.01em',
 };
