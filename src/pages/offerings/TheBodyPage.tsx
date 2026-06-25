@@ -382,7 +382,7 @@ export default function TheBodyPage() {
           </div>
           <div style={{ textAlign: 'right', flexShrink: 0 }}>
             <p style={{ margin: '0 0 2px', fontSize: 28, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>$340</p>
-            <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)} style={{ marginTop: 10, background: '#a8d4b4', color: '#1e2b25', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
+            <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)}} style={{ marginTop: 10, background: '#a8d4b4', color: '#1e2b25', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
               Reserve your series
             </button>
           </div>
