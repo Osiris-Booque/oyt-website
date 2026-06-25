@@ -84,9 +84,9 @@ export default function Footer() {
         <p>© 2026 OSIRIS YOGA THERAPY</p>
 
         <p>
-          Built by{" "}
+          Designed & Built with Love by{" "}
           <a
-            href="https://www.cactai.io"
+            href="https://www.cactai.io/work/osiris-yoga"
             target="_blank"
             rel="noopener noreferrer"
             className="underline"
