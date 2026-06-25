@@ -238,7 +238,7 @@ export default function TheMindPage() {
                 </span>
               ))}
             </div>
-            <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)} style={{ background: '#2d3d35', color: '#fff', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer' }}>
+            <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)}} style={{ background: '#2d3d35', color: '#fff', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer' }}>
               Reserve your series
             </button>
             <p style={{ margin: '10px 0 0', fontSize: 12, color: '#a09a93' }}>You&#39;ll complete intake and scheduling after booking.</p>
@@ -315,7 +315,7 @@ export default function TheMindPage() {
           </div>
           <div style={{ textAlign: 'right', flexShrink: 0 }}>
             <p style={{ margin: '0 0 2px', fontSize: 28, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>$255</p>
-            <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)} style={{ marginTop: 10, background: '#a8d4b4', color: '#1e2b25', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
+            <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)}} style={{ marginTop: 10, background: '#a8d4b4', color: '#1e2b25', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
               Reserve your series
             </button>
           </div>
