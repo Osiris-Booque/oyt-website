@@ -305,7 +305,7 @@ export default function TheBodyPage() {
                 </span>
               ))}
             </div>
-            <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)} style={{ background: '#2d3d35', color: '#fff', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer' }}>
+            <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)}} style={{ background: '#2d3d35', color: '#fff', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer' }}>
               Reserve your series
             </button>
             <p style={{ margin: '10px 0 0', fontSize: 12, color: '#a09a93' }}>You&#39;ll complete intake and scheduling after booking.</p>
