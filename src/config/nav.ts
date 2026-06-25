@@ -39,7 +39,7 @@ export const NAV_PERSONAL_PROGRAM: NavItem[] = [
 ]
 
 export const NAV_FLOW_SERIES: NavItem[] = [
-  { label: "Back to Personal Offerings", to: "/offerings/personal", isBack: true },
+  { label: "Back to Personal Offerings", to: "/offerings/personal#flow-series", isBack: true },
   { label: "Flow Series FAQ", to: "/offerings/flow-series/faq" }
 ]
 
@@ -48,7 +48,7 @@ export const NAV_PERSONAL_FAQ: NavItem[] = [
 ]
 
 export const NAV_PRIVATE_SESSION: NavItem[] = [
-  { label: "Back to Personal Offerings", to: "/offerings/personal", isBack: true },
+  { label: "Back to Personal Offerings", to: "/offerings/personal#private-sessions", isBack: true },
   { label: "The Body", to: "/offerings/private-sessions/the-body" },
   { label: "The Mind", to: "/offerings/private-sessions/the-mind" },
   { label: "The Soul", to: "/offerings/private-sessions/the-soul" },
