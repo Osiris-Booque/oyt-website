@@ -375,7 +375,7 @@ export default function TheBodyPage() {
           </div>
         </div>
 
-        <div style={{ background: '#2a2a28', borderRadius: 20, padding: '40px 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
+        <div style={{ background: '#18181b', borderRadius: 20, padding: '40px 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
           <div>
             <h3 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#fff' }}>Ready to begin?</h3>
             <p style={{ margin: 0, fontSize: 15, color: '#a8a89e', lineHeight: 1.5 }}>Reserve your series today. Scheduling and intake happen after you book.</p>
