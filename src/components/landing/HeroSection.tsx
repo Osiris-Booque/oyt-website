@@ -29,7 +29,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up delay-300">
             <Link
-              to="/offerings"
+              to="#offerings"
               className="group inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-sage-600 text-white rounded-full font-semibold text-base sm:text-lg hover:bg-sage-500 transition-all duration-300 shadow-lg shadow-sage-900/30"
             >
               <span>Explore Offerings</span>

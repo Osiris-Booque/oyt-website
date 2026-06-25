@@ -93,6 +93,7 @@ export default function Header({
       : `flex items-center gap-1.5 text-sm font-medium transition-colors duration-300 ${isLanding ? 'text-white/60 hover:text-white' : 'text-slate-400 hover:text-sage-600'}`;
 
     if (link.href) {
+      const isCrossPage = link.href.startsWith("/");
       return (
         <a
           key={link.label}
@@ -100,11 +101,16 @@ export default function Header({
           onClick={(e) => {
             e.preventDefault();
             if (mobile) closeMobile();
-            scrollToHash(link.href!);
-            window.history.pushState(null, "", link.href);
+            if (isCrossPage) {
+              window.location.href = link.href!;
+            } else {
+              scrollToHash(link.href!);
+              window.history.pushState(null, "", link.href);
+            }
           }}
-          className={baseClass}
+          className={link.isBack ? backClass : baseClass}
         >
+          {link.isBack && <ArrowLeft className="w-3.5 h-3.5 shrink-0" />}
           {link.label}
         </a>
       );
