@@ -6,7 +6,7 @@ const BOOKING_URL =
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white py-10 sm:py-16">
+    <footer className="bg-zinc-900 text-white py-10 sm:py-16">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
 
@@ -84,9 +84,9 @@ export default function Footer() {
         <p>© 2026 OSIRIS YOGA THERAPY</p>
 
         <p>
-          Built by{" "}
+          Designed & Built with Love by{" "}
           <a
-            href="https://www.cactai.io"
+            href="https://www.cactai.io/work/osiris-yoga"
             target="_blank"
             rel="noopener noreferrer"
             className="underline"
