@@ -8,7 +8,7 @@ const COHORT = [
     season: 'Summer',
     year: '2026',
     theme: 'Integration, Embodiment, Social Presence',
-    description: 'Nervous System Goal: Harmonize sympathetic and parasympathetic states',
+    description: 'Regulate activation through breathwork and tonification',
     dates: 'Two cohorts: Men (Jun 21 to Jul 26) and Women (Aug 2 to Sep 6)',
     sessions: '6 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
@@ -21,8 +21,8 @@ const COHORT = [
   {
     season: 'Fall',
     year: '2026',
-    theme: 'Transition, Consolidation, Reflection',
-    description: 'Nervous System Goal: Downshift from summer, integrate skills, release stagnant energy.',
+    theme: 'Transition, Consolidation, Downregulation',
+    description: 'Deepen relationships and expand connection through yin yoga',
     dates: 'Sep 27 to Nov 22 (one week break Oct 25)',
     sessions: '8 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
@@ -36,7 +36,7 @@ const COHORT = [
     season: 'Spring',
     year: '2027',
     theme: 'Upregulation, Activation, Growth',
-    description: 'Nervous System Goal: Safely expand energy, stimulate curiosity and agency.',
+    description: 'Awaken your nervous system and sharpen career focus',
     dates: 'March 22 to May 3',
     sessions: '8 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
@@ -49,8 +49,8 @@ const COHORT = [
   {
     season: 'Winter',
     year: '2027',
-    theme: 'Downregulation, Restoration, Reflection',
-    description: 'Nervous System Goal: Strengthen parasympathetic activation, create internal safety',
+    theme: 'Downregulation, Stillness, Shed',
+    description: 'Rebuild your foundation through yoga therapy',
     dates: 'Jan 3 to Feb 28 (skip Super Bowl Sunday)',
     sessions: '8 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
@@ -82,7 +82,7 @@ export default function CohortCards() {
                 Seasonal Experiences
               </h2>
               <p className="text-slate-500 text-sm mt-1 max-w-xl leading-relaxed">
-                Seasonal yoga therapy programs that run with the year. Drop in wherever you are. The cycle carries you forward.
+                Seasonal yoga therapy programs that run with the year. Drop in wherever you are. The cycle carries you forward. This program has outgrown this humble space and each season now has its own dedicated website. You can visit each website to learn more using the link below. 
               </p>
             </div>
           </div>
