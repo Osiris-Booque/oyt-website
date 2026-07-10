@@ -82,7 +82,7 @@ export default function CohortCards() {
                 Seasonal Experiences
               </h2>
               <p className="text-slate-500 text-sm mt-1 max-w-xl leading-relaxed">
-                Seasonal yoga therapy programs that run with the year. Drop in wherever you are. The cycle carries you forward. This program has outgrown this humble space and each season now has its own dedicated website. You can visit each website to learn more using the link below. 
+                Seasonal yoga therapy programs that run with the year. Drop in wherever you are. The cycle carries you forward. These programs have outgrown this humble space and each season now has its own dedicated website. You can visit each website to learn more using the links below. 
               </p>
             </div>
           </div>
