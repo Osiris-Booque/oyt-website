@@ -7,8 +7,9 @@ const COHORT = [
   {
     season: 'Summer',
     year: '2026',
-    theme: 'Integration, Embodiment, Social Presence',
-    description: 'Regulate activation through breathwork and tonification',
+    theme: 'Up-Regulation, Embodiment, Social Presence',
+    description: 'Activate your nervous system sustainably through breath work and tonification',
+    modality: 'Kundalini Kriya',
     dates: 'Two cohorts: Men (Jun 21 to Jul 26) and Women (Aug 2 to Sep 6)',
     sessions: '6 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
@@ -21,8 +22,9 @@ const COHORT = [
   {
     season: 'Fall',
     year: '2026',
-    theme: 'Transition, Consolidation, Downregulation',
-    description: 'Deepen relationships and expand connection through yin yoga',
+    theme: 'Transition, Consolidation, Down-regulation',
+    description: 'Deepen relationships and down regulate intentionally with this cooling and soothing program',
+    modality: 'Yin Yoga Therapy',
     dates: 'Sep 27 to Nov 22 (one week break Oct 25)',
     sessions: '8 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
@@ -35,8 +37,9 @@ const COHORT = [
   {
     season: 'Spring',
     year: '2027',
-    theme: 'Upregulation, Activation, Growth',
-    description: 'Awaken your nervous system and sharpen career focus',
+    theme: 'Growth, Emergence, Career Development',
+    description: 'Stabilize your nervous system by refining purpose and career focus',
+    modality: 'Yoga Asana',
     dates: 'March 22 to May 3',
     sessions: '8 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
@@ -49,8 +52,9 @@ const COHORT = [
   {
     season: 'Winter',
     year: '2027',
-    theme: 'Downregulation, Stillness, Shed',
-    description: 'Rebuild your foundation through yoga therapy',
+    theme: 'Restoration, Stillness, Shed',
+    description: 'Excavate and rebuild your foundation through yoga therapy',
+    modality: 'Phoenix Rising Yoga Therapy',
     dates: 'Jan 3 to Feb 28 (skip Super Bowl Sunday)',
     sessions: '8 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
@@ -115,8 +119,12 @@ export default function CohortCards() {
                 {cohort.theme}
               </h3>
 
-              <p className="text-sm text-slate-500 leading-relaxed mb-6 flex-grow">
+              <p className="text-sm text-slate-500 leading-relaxed mb-3 flex-grow">
                 {cohort.description}
+              </p>
+
+              <p className="text-xs font-semibold text-slate-600 mb-4">
+                {cohort.modality}
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-6">
