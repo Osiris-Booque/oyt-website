@@ -143,11 +143,11 @@ export default function TeamOfferingsPage() {
           className="max-w-7xl mx-auto px-6 pb-20"
         >
           <p className="text-sage-700 uppercase tracking-widest text-lg mb-2">
-            Group Programs
+            Team Growth & Wellness
           </p>
 
           <h1 className="text-3xl font-bold text-slate-900 mb-6">
-            Wellness Programs for Teams & Communities
+            Your Team, Your Dream
           </h1>
 
           <p className="text-slate-500 max-w-2xl mb-10">
