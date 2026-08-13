@@ -146,9 +146,9 @@ export default function TeamOfferingsPage() {
             Group Programs
           </p>
 
-          {/ <h1 className="text-3xl font-bold text-slate-900 mb-6">
+          <h1 className="text-3xl font-bold text-slate-900 mb-6">
             Wellness Programs for Teams & Communities
-          </h1>/}
+          </h1>
 
           <p className="text-slate-500 max-w-2xl mb-10">
             Carefully crafted programs for organizations, communities, and
