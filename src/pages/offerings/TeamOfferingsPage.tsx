@@ -1,7 +1,7 @@
 import { Building2, Handshake, Landmark, Monitor, MapPin, ArrowRight, CheckCircle2, Users } from "lucide-react";
 
 const WELLNESS = {
-  title: "Wellness Consulting",
+  title: "Consulting",
   subtitle: "Strategic partnership for organizational wellness",
   description:
     "For organizations that want more than delivered sessions. Osiris works directly with your leadership to design a wellness framework built around your team's actual patterns, not a package pulled off a shelf.",
@@ -16,7 +16,7 @@ const WELLNESS = {
 };
 
 const GOVERNMENT = {
-  title: "Government Agency Programs",
+  title: "Government",
   subtitle: "Resilience & performance for public servants",
   description:
     "Purpose-built wellness and performance programs for government teams managing high-stress environments.",
@@ -31,7 +31,7 @@ const GOVERNMENT = {
 };
 
 const CORPORATE = {
-  title: "Corporate Wellness Programs",
+  title: "Corporate",
   subtitle: "Culture, performance, and retention",
   description:
     "Scalable wellness frameworks designed to integrate with L&D and HR strategies.",
@@ -46,7 +46,7 @@ const CORPORATE = {
 };
 
 const COMMUNITY = {
-  title: "Community Wellness Programs",
+  title: "Community",
   subtitle: "Wellness for schools & nonprofits",
   description:
     "Specialized wellness programs designed for schools, nonprofits, and community organizations.",
@@ -146,9 +146,9 @@ export default function TeamOfferingsPage() {
             Group Programs
           </p>
 
-          {/* <h1 className="text-3xl font-bold text-slate-900 mb-6">
+          {/ <h1 className="text-3xl font-bold text-slate-900 mb-6">
             Wellness Programs for Teams & Communities
-          </h1>*/}
+          </h1>/}
 
           <p className="text-slate-500 max-w-2xl mb-10">
             Carefully crafted programs for organizations, communities, and
