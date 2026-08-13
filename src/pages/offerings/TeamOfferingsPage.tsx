@@ -156,7 +156,7 @@ export default function TeamOfferingsPage() {
             communication.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             <ProgramCard program={WELLNESS} Icon={Handshake} />
             <ProgramCard program={GOVERNMENT} Icon={Landmark} />
             <ProgramCard program={CORPORATE} Icon={Building2} />
