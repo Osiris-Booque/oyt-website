@@ -1,4 +1,19 @@
-import { Building2, Landmark, Monitor, MapPin, ArrowRight, CheckCircle2, Users } from "lucide-react";
+import { Building2, Handshake, Landmark, Monitor, MapPin, ArrowRight, CheckCircle2, Users } from "lucide-react";
+
+const WELLNESS = {
+  title: "Wellness Consulting",
+  subtitle: "Strategic partnership for organizational wellness",
+  description:
+    "For organizations that want more than delivered sessions. Osiris works directly with your leadership to design a wellness framework built around your team's actual patterns, not a package pulled off a shelf.",
+  image:
+    "https://images.pexels.com/photos/15141493/pexels-photo-15141493.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
+  features: [
+    "Organizational wellness assessment",
+    "Custom framework design with leadership",
+    "Ongoing strategic advisory",
+    "Integration with existing L&D/HR structure",
+  ],
+};
 
 const GOVERNMENT = {
   title: "Government Agency Programs",
@@ -142,6 +157,7 @@ export default function TeamOfferingsPage() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-6">
+            <ProgramCard program={WELLNESS} Icon={Handshake} />
             <ProgramCard program={GOVERNMENT} Icon={Landmark} />
             <ProgramCard program={CORPORATE} Icon={Building2} />
             <ProgramCard program={COMMUNITY} Icon={Users} />
