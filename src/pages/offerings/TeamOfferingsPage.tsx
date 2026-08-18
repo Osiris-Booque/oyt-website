@@ -1,7 +1,22 @@
-import { Building2, Landmark, Monitor, MapPin, ArrowRight, CheckCircle2, Users } from "lucide-react";
+import { Building2, Handshake, Landmark, Monitor, MapPin, ArrowRight, CheckCircle2, Users } from "lucide-react";
+
+const WELLNESS = {
+  title: "Consulting",
+  subtitle: "Strategic partnership for organizational wellness",
+  description:
+    "For organizations that want more than delivered sessions. Osiris works directly with your leadership to design a wellness framework built around your team's actual patterns, not a package pulled off a shelf.",
+  image:
+    "https://images.pexels.com/photos/15141493/pexels-photo-15141493.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
+  features: [
+    "Organizational wellness assessment",
+    "Custom framework design with leadership",
+    "Ongoing strategic advisory",
+    "Integration with existing L&D/HR structure",
+  ],
+};
 
 const GOVERNMENT = {
-  title: "Government Agency Programs",
+  title: "Government",
   subtitle: "Resilience & performance for public servants",
   description:
     "Purpose-built wellness and performance programs for government teams managing high-stress environments.",
@@ -16,7 +31,7 @@ const GOVERNMENT = {
 };
 
 const CORPORATE = {
-  title: "Corporate Wellness Programs",
+  title: "Corporate",
   subtitle: "Culture, performance, and retention",
   description:
     "Scalable wellness frameworks designed to integrate with L&D and HR strategies.",
@@ -31,7 +46,7 @@ const CORPORATE = {
 };
 
 const COMMUNITY = {
-  title: "Community Wellness Programs",
+  title: "Community",
   subtitle: "Wellness for schools & nonprofits",
   description:
     "Specialized wellness programs designed for schools, nonprofits, and community organizations.",
@@ -128,12 +143,12 @@ export default function TeamOfferingsPage() {
           className="max-w-7xl mx-auto px-6 pb-20"
         >
           <p className="text-sage-700 uppercase tracking-widest text-lg mb-2">
-            Group Programs
+            Team Growth & Wellness
           </p>
 
-          {/* <h1 className="text-3xl font-bold text-slate-900 mb-6">
-            Wellness Programs for Teams & Communities
-          </h1>*/}
+          <h1 className="text-3xl font-bold text-slate-900 mb-6">
+            Your Team, Your Dream
+          </h1>
 
           <p className="text-slate-500 max-w-2xl mb-10">
             Carefully crafted programs for organizations, communities, and
@@ -141,7 +156,8 @@ export default function TeamOfferingsPage() {
             communication.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            <ProgramCard program={WELLNESS} Icon={Handshake} />
             <ProgramCard program={GOVERNMENT} Icon={Landmark} />
             <ProgramCard program={CORPORATE} Icon={Building2} />
             <ProgramCard program={COMMUNITY} Icon={Users} />
