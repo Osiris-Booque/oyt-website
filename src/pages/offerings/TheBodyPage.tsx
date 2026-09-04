@@ -22,6 +22,15 @@ const TESTIMONIALS = [
   { name: 'Priya S.', quote: 'Not like any yoga class I\'ve taken before. This feels like working with someone who actually sees you.', stars: 5 },
 ];
 
+// Single source of truth for this series' pricing. Change PER_SESSION (or
+// SESSION_COUNT) and every price on the page and in the modal follows.
+const SERIES_NAME = 'The Body';
+const SESSION_COUNT = 4;
+const PER_SESSION = 85;
+const TOTAL = SESSION_COUNT * PER_SESSION;
+const PRICE_LABEL = `$${TOTAL}`;
+const PER_SESSION_LABEL = `$${PER_SESSION}`;
+
 const HERO_META = [
   { Icon: Clock, text: '35 min sessions' },
   { Icon: User, text: '1:1 with your instructor' },
@@ -273,7 +282,7 @@ export default function TheBodyPage() {
 
   return (
     <div style={{ fontFamily: "'Inter', system-ui, sans-serif", background: '#faf9f6', color: '#1e2b25', minHeight: '100vh' }}>
-      {modalOpen && <Modal onClose={() => setModalOpen(false)} seriesName="The Body" sessionCount={4} price="$340" perSession="$85" />}
+      {modalOpen && <Modal onClose={() => setModalOpen(false)} seriesName={SERIES_NAME} sessionCount={SESSION_COUNT} price={PRICE_LABEL} perSession={PER_SESSION_LABEL} />}
 
       <section style={{ position: 'relative', minHeight: 380, overflow: 'hidden' }}>
         <img
@@ -326,8 +335,8 @@ export default function TheBodyPage() {
             <p style={{ margin: '10px 0 0', fontSize: 12, color: '#a09a93' }}>You&#39;ll complete intake and scheduling after booking.</p>
           </div>
           <div style={{ background: '#2d3d35', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '28px 36px', minWidth: 160 }}>
-            <p style={{ margin: '0 0 4px', fontSize: 36, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em' }}>$340</p>
-            <p style={{ margin: '0 0 8px', fontSize: 13, color: '#8fb09a' }}>total · $85 per session</p>
+            <p style={{ margin: '0 0 4px', fontSize: 36, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em' }}>{PRICE_LABEL}</p>
+            <p style={{ margin: '0 0 8px', fontSize: 13, color: '#8fb09a' }}>total · {PER_SESSION_LABEL} per session</p>
             <div style={{ width: 40, height: 1, background: '#3d5a49', margin: '8px 0' }} />
             <p style={{ margin: 0, fontSize: 11, color: '#6dab85', fontWeight: 600, textAlign: 'center', lineHeight: 1.4 }}>One-time payment<br />No subscription</p>
           </div>
@@ -396,7 +405,7 @@ export default function TheBodyPage() {
             <p style={{ margin: 0, fontSize: 15, color: '#a8a89e', lineHeight: 1.5 }}>Reserve your series today. Scheduling and intake happen after you book.</p>
           </div>
           <div style={{ textAlign: 'right', flexShrink: 0 }}>
-            <p style={{ margin: '0 0 2px', fontSize: 28, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>$340</p>
+            <p style={{ margin: '0 0 2px', fontSize: 28, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>{PRICE_LABEL}</p>
             <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)}} style={{ marginTop: 10, background: '#a8d4b4', color: '#1e2b25', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
               Reserve your series
             </button>

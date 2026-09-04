@@ -22,6 +22,15 @@ const TESTIMONIALS = [
   { name: 'Priya S.', quote: "Not like any yoga class I've taken before. This feels like working with someone who actually sees you.", stars: 5 },
 ];
 
+// Single source of truth for this series' pricing. Change PER_SESSION (or
+// SESSION_COUNT) and every price on the page and in the modal follows.
+const SERIES_NAME = 'The Mind';
+const SESSION_COUNT = 3;
+const PER_SESSION = 85;
+const TOTAL = SESSION_COUNT * PER_SESSION;
+const PRICE_LABEL = `$${TOTAL}`;
+const PER_SESSION_LABEL = `$${PER_SESSION}`;
+
 const HERO_META = [
   { Icon: Clock, text: '35 min sessions' },
   { Icon: User, text: '1:1 with your instructor' },
@@ -55,7 +64,15 @@ function Stars({ count }: { count: number }) {
   );
 }
 
-function Modal({ onClose }: { onClose: () => void }) {
+type ModalProps = {
+  onClose: () => void;
+  seriesName: string;
+  sessionCount: number;
+  price: string;
+  perSession: string;
+};
+
+function Modal({ onClose, seriesName, sessionCount, price, perSession }: ModalProps) {
   const [step, setStep] = useState('form');
   const [contact, setContact] = useState<string[]>([]);
   const [cardNum, setCardNum] = useState('');
@@ -91,12 +108,12 @@ function Modal({ onClose }: { onClose: () => void }) {
           <p style={{ fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8fb09a', margin: '0 0 6px' }}>Osiris Yoga Therapy</p>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
             <div>
-              <h3 style={{ margin: '0 0 4px', fontSize: 20, fontWeight: 700, color: '#fff' }}>The Mind — 3-Session Series</h3>
-              <p style={{ margin: 0, fontSize: 13, color: '#a8c4b2' }}>3 private sessions · 35 min each · Virtual via Zoom</p>
+              <h3 style={{ margin: '0 0 4px', fontSize: 20, fontWeight: 700, color: '#fff' }}>{seriesName} — {sessionCount}-Session Series</h3>
+              <p style={{ margin: 0, fontSize: 13, color: '#a8c4b2' }}>{sessionCount} private sessions · 35 min each · Virtual via Zoom</p>
             </div>
             <div style={{ textAlign: 'right', flexShrink: 0, marginLeft: 16 }}>
-              <p style={{ margin: 0, fontSize: 26, fontWeight: 800, letterSpacing: '-0.02em', color: '#fff' }}>$255</p>
-              <p style={{ margin: 0, fontSize: 11, color: '#8fb09a' }}>$85 / session</p>
+              <p style={{ margin: 0, fontSize: 26, fontWeight: 800, letterSpacing: '-0.02em', color: '#fff' }}>{price}</p>
+              <p style={{ margin: 0, fontSize: 11, color: '#8fb09a' }}>{perSession} / session</p>
             </div>
           </div>
           {step === 'form' && (
@@ -167,11 +184,11 @@ function Modal({ onClose }: { onClose: () => void }) {
                 <div><label style={labelStyle}>Name on card</label><input style={inputStyle} placeholder="Jane Smith" value={cardName} onChange={e => setCardName(e.target.value)} /></div>
               </div>
               <div style={{ background: '#f5f3ef', borderRadius: 10, padding: '12px 16px', marginBottom: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13 }}>
-                <span style={{ color: '#5a5650' }}>The Mind — 3-Session Series</span>
-                <span style={{ fontWeight: 700, color: '#2d3d35', fontSize: 15 }}>$255</span>
+                <span style={{ color: '#5a5650' }}>{seriesName} — {sessionCount}-Session Series</span>
+                <span style={{ fontWeight: 700, color: '#2d3d35', fontSize: 15 }}>{price}</span>
               </div>
               <button onClick={handlePay} disabled={processing} style={{ ...ctaStyle, background: processing ? '#8fb09a' : '#2d3d35', cursor: processing ? 'default' : 'pointer' }}>
-                {processing ? 'Processing…' : 'Pay $255'}
+                {processing ? 'Processing…' : `Pay ${price}`}
               </button>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 14 }}>
                 <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><rect x="1" y="5" width="10" height="8" rx="1.5" stroke="#a09a93" strokeWidth="1.2"/><path d="M3.5 5V3.5a2.5 2.5 0 015 0V5" stroke="#a09a93" strokeWidth="1.2"/></svg>
@@ -191,8 +208,8 @@ function Modal({ onClose }: { onClose: () => void }) {
                 Your reservation confirmation has been sent to you via email. We will reach out to you with instructions for the next step within three business days.
               </p>
               <div style={{ background: '#f1ede7', borderRadius: 12, padding: '16px', textAlign: 'left', marginBottom: 24 }}>
-                <p style={{ margin: '0 0 6px', fontWeight: 700, fontSize: 13, color: '#2d3d35' }}>The Mind — 3-Session Series</p>
-                <p style={{ margin: 0, fontSize: 12, color: '#7a7470' }}>3 private sessions · 35 min each · Virtual via Zoom</p>
+                <p style={{ margin: '0 0 6px', fontWeight: 700, fontSize: 13, color: '#2d3d35' }}>{seriesName} — {sessionCount}-Session Series</p>
+                <p style={{ margin: 0, fontSize: 12, color: '#7a7470' }}>{sessionCount} private sessions · 35 min each · Virtual via Zoom</p>
               </div>
               <button onClick={onClose} style={{ ...ctaStyle, background: '#f1ede7', color: '#2d3d35' }}>Close</button>
             </div>
@@ -208,7 +225,7 @@ export default function TheMindPage() {
 
   return (
     <div style={{ fontFamily: "'Inter', system-ui, sans-serif", background: '#faf9f6', color: '#1e2b25', minHeight: '100vh' }}>
-      {modalOpen && <Modal onClose={() => setModalOpen(false)} />}
+      {modalOpen && <Modal onClose={() => setModalOpen(false)} seriesName={SERIES_NAME} sessionCount={SESSION_COUNT} price={PRICE_LABEL} perSession={PER_SESSION_LABEL} />}
 
       <section style={{ position: 'relative', minHeight: 380, overflow: 'hidden' }}>
         <img
@@ -251,8 +268,8 @@ export default function TheMindPage() {
             <p style={{ margin: '10px 0 0', fontSize: 12, color: '#a09a93' }}>You&#39;ll complete intake and scheduling after booking.</p>
           </div>
           <div style={{ background: '#2d3d35', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '28px 36px', minWidth: 160 }}>
-            <p style={{ margin: '0 0 4px', fontSize: 36, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em' }}>$255</p>
-            <p style={{ margin: '0 0 8px', fontSize: 13, color: '#8fb09a' }}>total · $85 per session</p>
+            <p style={{ margin: '0 0 4px', fontSize: 36, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em' }}>{PRICE_LABEL}</p>
+            <p style={{ margin: '0 0 8px', fontSize: 13, color: '#8fb09a' }}>total · {PER_SESSION_LABEL} per session</p>
             <div style={{ width: 40, height: 1, background: '#3d5a49', margin: '8px 0' }} />
             <p style={{ margin: 0, fontSize: 11, color: '#6dab85', fontWeight: 600, textAlign: 'center', lineHeight: 1.4 }}>One-time payment<br />No subscription</p>
           </div>
@@ -321,7 +338,7 @@ export default function TheMindPage() {
             <p style={{ margin: 0, fontSize: 15, color: '#a8a89e', lineHeight: 1.5 }}>Reserve your series today. Scheduling and intake happen after you book.</p>
           </div>
           <div style={{ textAlign: 'right', flexShrink: 0 }}>
-            <p style={{ margin: '0 0 2px', fontSize: 28, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>$255</p>
+            <p style={{ margin: '0 0 2px', fontSize: 28, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>{PRICE_LABEL}</p>
             <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)}} style={{ marginTop: 10, background: '#a8d4b4', color: '#1e2b25', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
               Reserve your series
             </button>
