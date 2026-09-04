@@ -4,7 +4,7 @@ import { User, ArrowRight, CheckCircle2, Clock, ArrowUp } from 'lucide-react';
 const SESSION_TYPES = [
   {
     title: 'The Body',
-    price: 'Under $400',
+    price: 'Under $399',
     duration: '4 sessions • 35 min each',
     description:
       'A yoga therapy track for those whose relationship with their physical self is where the deepest work lives. We move through foundational somatic awareness, embodied strength, structural balance, and nervous system regulation building from the inside out.',
@@ -17,7 +17,7 @@ const SESSION_TYPES = [
   },
   {
     title: 'The Mind',
-    price: 'Under $300',
+    price: 'Under $299',
     duration: '3 sessions • 35 min each',
     description:
       'A yoga therapy track for those whose relationship with their emotional and mental experience is where the deepest work lives. We apply the full yoga therapy framework through the lens of somatic-emotional and somatic-cognitive awareness.',
@@ -30,7 +30,7 @@ const SESSION_TYPES = [
   },
   {
     title: 'The Soul',
-    price: 'Under $400',
+    price: 'Under $399',
     duration: '4 sessions • 35 min each',
     description:
       'A yoga therapy track for those whose relationship with their energetic identity, inner dualities, and spiritual self is where the deepest work lives. We explore how the energies you carry shape how you inhabit your body and move through the world.',
