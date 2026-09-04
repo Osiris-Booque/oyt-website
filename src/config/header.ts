@@ -7,6 +7,7 @@ import {
   NAV_PERSONAL_FAQ,
   NAV_PRIVATE_SESSION,
   NAV_TEAM_HUB,
+  NAV_TEAM_PROGRAM,
   NAV_ABOUT,
   NAV_CONTACT,
   NAV_FLOW_SERIES
@@ -61,6 +62,13 @@ export const HEADER_CONFIG = {
     navItems: NAV_PERSONAL_PROGRAM,
     cta: "enrollToday",
     hideCurrentPage: true
+  },
+
+  teamProgram: {
+    style: "frosted",
+    navItems: NAV_TEAM_PROGRAM,
+    cta: "none",
+    hideCurrentPage: false
   },
 
   teamHub: {

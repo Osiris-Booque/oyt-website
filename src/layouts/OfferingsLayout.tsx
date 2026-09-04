@@ -3,6 +3,13 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import { HEADER_CONFIG } from "../config/header";
 
+const TEAM_PROGRAM_PATHS = [
+  "/offerings/team/consulting",
+  "/offerings/team/government",
+  "/offerings/team/corporate",
+  "/offerings/team/community",
+];
+
 const PRIVATE_SESSION_PATHS = [
   "/offerings/personal/the-body",
   "/offerings/personal/the-mind",
@@ -34,6 +41,10 @@ export default function OfferingsLayout() {
 
   if (PRIVATE_SESSION_PATHS.includes(path)) {
     headerConfig = HEADER_CONFIG.privateSession;
+  }
+
+  if (TEAM_PROGRAM_PATHS.includes(path)) {
+    headerConfig = HEADER_CONFIG.teamProgram;
   }
 
   if (path === "/contact") {

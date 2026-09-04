@@ -54,6 +54,14 @@ export const NAV_PRIVATE_SESSION: NavItem[] = [
   { label: "The Soul", to: "/offerings/personal/the-soul" },
 ]
 
+export const NAV_TEAM_PROGRAM: NavItem[] = [
+  { label: "Back to Team Offerings", to: "/offerings/team", isBack: true },
+  { label: "Consulting", to: "/offerings/team/consulting" },
+  { label: "Government", to: "/offerings/team/government" },
+  { label: "Corporate", to: "/offerings/team/corporate" },
+  { label: "Community", to: "/offerings/team/community" },
+]
+
 export const NAV_TEAM_HUB: NavItem[] = [
   { label: "Back to all Offerings", href: "/#offerings", isBack: true },
   { label: "Program FAQs", to: "/offerings/team/faq" }
