@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { CalendarDays, ArrowRight, MapPin, Clock, Users, ArrowUp, Waves, DollarSign } from 'lucide-react';
 import NotifyModal from '../NotifyModal';
 
@@ -15,9 +14,7 @@ const COHORT = [
     location: 'Remote (Zoom)',
     price: '1200',
     spotsLeft: 0,
-    link: '/purchase-summer-flow',
-    linkLabel: 'Register Now',
-    useModal: false,
+    url: 'https://www.flowthroughsummer.com',
   },
   {
     season: 'Fall',
@@ -30,9 +27,7 @@ const COHORT = [
     location: 'Remote (Zoom)',
     price: '1200',
     spotsLeft: 12,
-    link: '/notify',
-    linkLabel: 'Join Early-Access List',
-    useModal: true,
+    url: 'https://www.flowthroughfall.com',
   },
   {
     season: 'Spring',
@@ -45,9 +40,7 @@ const COHORT = [
     location: 'Remote (Zoom)',
     price: '1200',
     spotsLeft: 12,
-    link: '/notify',
-    linkLabel: 'Join Early-Access List',
-    useModal: true,
+    url: 'https://www.flowintospring.com',
   },
   {
     season: 'Winter',
@@ -60,9 +53,7 @@ const COHORT = [
     location: 'Remote (Zoom)',
     price: '1200',
     spotsLeft: 12,
-    link: '/notify',
-    linkLabel: 'Join Early-Access List',
-    useModal: true,
+    url: 'https://www.flowthroughwinter.com',
   },
 ];
 
@@ -148,27 +139,15 @@ export default function CohortCards() {
                 </div>
               </div>
 
-                {cohort.useModal ? (
-                  <button
-                    onClick={() => setModalOpen(true)}
-                    className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
-                  >
-                    {cohort.linkLabel}
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                ) : cohort.spotsLeft === 0 ? (
-                  <span className="flex items-center gap-1.5 text-sm font-semibold text-slate-400 cursor-not-allowed">
-                    Sold Out
-                  </span>
-                ) : (
-                  <Link
-                    to={cohort.link}
-                    className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
-                  >
-                    {cohort.linkLabel}
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                )}
+                <a
+                  href={cohort.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
+                >
+                  Visit {cohort.season} Website
+                  <ArrowRight className="w-4 h-4" />
+                </a>
             </div>
           ))}
         </div>

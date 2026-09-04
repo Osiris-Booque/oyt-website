@@ -13,7 +13,7 @@ const SESSION_TYPES = [
       'Embodied strength and proprioceptive stability',
       'Parasympathetic nervous system regulation',
     ],
-    link: '/offerings/private-sessions/the-body',
+    link: '/offerings/personal/the-body',
   },
   {
     title: 'The Mind',
@@ -26,7 +26,7 @@ const SESSION_TYPES = [
       'Metacognitive observation of thought patterns',
       'Embodied mental and emotional yoga therapy practice',
     ],
-    link: '/offerings/private-sessions/the-mind',
+    link: '/offerings/personal/the-mind',
   },
   {
     title: 'The Soul',
@@ -39,7 +39,7 @@ const SESSION_TYPES = [
       'Somatic exploration of feminine, masculine, and Two Spirit energies',
       'Embodied soul work grounded in yoga therapy principles',
     ],
-    link: '/offerings/private-sessions/the-soul',
+    link: '/offerings/personal/the-soul',
   },
 ];
 

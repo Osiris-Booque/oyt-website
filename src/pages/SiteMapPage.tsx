@@ -69,6 +69,9 @@ const sections: SiteSection[] = [
       { path: "/offerings/personal", label: "Personal Offerings", description: "Individual programs, Flow Series highlight" },
       { path: "/offerings/team", label: "Team Offerings", description: "Government, Corporate, Community programs" },
       { path: "/offerings/flow-series", label: "Flow Series Detail", description: "Full program details, curriculum, pricing" },
+      { path: "/offerings/personal/the-body", label: "The Body", description: "Private session track — somatic awareness, strength, nervous system regulation" },
+      { path: "/offerings/personal/the-mind", label: "The Mind", description: "Private session track — somatic-emotional and metacognitive work" },
+      { path: "/offerings/personal/the-soul", label: "The Soul", description: "Private session track — energetic identity and inner dualities" },
       { path: "/offerings/personal/faq", label: "Personal FAQ", description: "Program-specific questions" },
       { path: "/offerings/team/faq", label: "Team FAQ", description: "Team program questions" },
     ],
@@ -162,6 +165,14 @@ const flows: FlowArrow[] = [
 
   { from: "/offerings/personal", to: "/checkout/spring-cohort/register", label: "Enroll Now", type: "cta" },
   { from: "/offerings/personal", to: "/offerings/flow-series", label: "Learn More", type: "nav" },
+
+  { from: "/offerings/personal", to: "/offerings/personal/the-body", label: "The Body card", type: "nav" },
+  { from: "/offerings/personal", to: "/offerings/personal/the-mind", label: "The Mind card", type: "nav" },
+  { from: "/offerings/personal", to: "/offerings/personal/the-soul", label: "The Soul card", type: "nav" },
+  { from: "/offerings/personal", to: "external:flowthroughsummer.com", label: "Summer season site", type: "external" },
+  { from: "/offerings/personal", to: "external:flowthroughfall.com", label: "Fall season site", type: "external" },
+  { from: "/offerings/personal", to: "external:flowintospring.com", label: "Spring season site", type: "external" },
+  { from: "/offerings/personal", to: "external:flowthroughwinter.com", label: "Winter season site", type: "external" },
 
   { from: "/offerings/team", to: "external:calendar", label: "Book a Consultation", type: "external" },
 
