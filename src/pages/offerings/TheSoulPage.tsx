@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { CSSProperties } from 'react';
 import { User, Clock, MessageCircle, CheckCircle2, Star, X, Phone, Mail, MessageSquare } from 'lucide-react';
 
 const SESSIONS = [
@@ -22,24 +23,30 @@ const TESTIMONIALS = [
   { name: 'Priya S.', quote: "Not like any yoga class I've taken before. This feels like working with someone who actually sees you.", stars: 5 },
 ];
 
-const labelStyle = {
+const HERO_META = [
+  { Icon: Clock, text: '35 min sessions' },
+  { Icon: User, text: '1:1 with your instructor' },
+  { Icon: MessageCircle, text: 'Virtual via Zoom' },
+];
+
+const labelStyle: CSSProperties = {
   display: 'block', fontSize: 11, fontWeight: 600, letterSpacing: '0.08em',
   textTransform: 'uppercase', color: '#7a7470', marginBottom: 5,
 };
 
-const inputStyle = {
+const inputStyle: CSSProperties = {
   width: '100%', boxSizing: 'border-box', padding: '10px 12px',
   borderRadius: 9, border: '1.5px solid #d8d3cc', background: '#fff',
   fontSize: 14, color: '#1e2b25', outline: 'none',
 };
 
-const ctaStyle = {
+const ctaStyle: CSSProperties = {
   width: '100%', padding: '14px', background: '#6b9e7e', color: '#fff',
   border: 'none', borderRadius: 11, fontSize: 15, fontWeight: 700,
   cursor: 'pointer', letterSpacing: '0.01em',
 };
 
-function Stars({ count }) {
+function Stars({ count }: { count: number }) {
   return (
     <div style={{ display: 'flex', gap: 2 }}>
       {Array.from({ length: count }).map((_, i) => (
@@ -49,16 +56,16 @@ function Stars({ count }) {
   );
 }
 
-function Modal({ onClose }) {
+function Modal({ onClose }: { onClose: () => void }) {
   const [step, setStep] = useState('form');
-  const [contact, setContact] = useState([]);
+  const [contact, setContact] = useState<string[]>([]);
   const [cardNum, setCardNum] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
   const [cardName, setCardName] = useState('');
   const [processing, setProcessing] = useState(false);
 
-  const toggleContact = (val) =>
+  const toggleContact = (val: string) =>
     setContact(prev => prev.includes(val) ? prev.filter(v => v !== val) : [...prev, val]);
 
   const handlePay = () => {
@@ -66,8 +73,8 @@ function Modal({ onClose }) {
     setTimeout(() => { setProcessing(false); setStep('success'); }, 1800);
   };
 
-  const formatCard = (val) => val.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
-  const formatExpiry = (val) => {
+  const formatCard = (val: string) => val.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
+  const formatExpiry = (val: string) => {
     const d = val.replace(/\D/g, '').slice(0, 4);
     return d.length >= 3 ? d.slice(0, 2) + ' / ' + d.slice(2) : d;
   };
@@ -218,7 +225,7 @@ export default function TheSoulPage() {
             A 4-session yoga therapy series for people whose relationship with their energetic identity, inner dualities, and spiritual self is where the deepest work lives.
           </p>
           <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-            {[[Clock, '35 min sessions'], [User, '1:1 with your instructor'], [MessageCircle, 'Virtual via Zoom']].map(([Icon, text]) => (
+            {HERO_META.map(({ Icon, text }) => (
               <span key={text} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: '#a8c4b2' }}>
                 <Icon size={14} /> {text}
               </span>

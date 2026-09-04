@@ -107,10 +107,10 @@ export default function NotifyModal({ isOpen, onClose }: NotifyModalProps) {
           </div>
         ) : (
           <>
-            <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">Early Access</p>
-            <h2 className="text-xl font-bold text-slate-900 mb-1">Join the Waitlist</h2>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">Flow Series Announcements</p>
+            <h2 className="text-xl font-bold text-slate-900 mb-1">Send Me Emails About Flow Series</h2>
             <p className="text-sm text-slate-500 mb-6 leading-relaxed">
-              Cohorts fill quickly and are announced to our community first. We'll let you know when registration opens.
+              We'll send you emails with announcements about the Flow Series to make sure you know every time a new cohort opens for signup.
             </p>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">

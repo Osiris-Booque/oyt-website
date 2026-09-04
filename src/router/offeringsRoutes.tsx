@@ -1,4 +1,4 @@
-import { Route, Navigate } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { lazy } from "react";
 import OfferingsLayout from "../layouts/OfferingsLayout";
 
@@ -27,12 +27,6 @@ export const offeringsRoutes = (
     <Route path="/offerings/personal/the-body" element={<TheBodyPage />} />
     <Route path="/offerings/personal/the-mind" element={<TheMindPage />} />
     <Route path="/offerings/personal/the-soul" element={<TheSoulPage />} />
-
-    {/* Legacy /offerings/private-sessions/* URLs → canonical /offerings/personal/* */}
-    <Route path="/offerings/private-sessions/the-body" element={<Navigate to="/offerings/personal/the-body" replace />} />
-    <Route path="/offerings/private-sessions/the-mind" element={<Navigate to="/offerings/personal/the-mind" replace />} />
-    <Route path="/offerings/private-sessions/the-soul" element={<Navigate to="/offerings/personal/the-soul" replace />} />
-    <Route path="/offerings/private-sessions/*" element={<Navigate to="/offerings/personal#private-sessions" replace />} />
     <Route path="/offerings/personal/faq" element={<PersonalOfferingsFAQPage />} />
     <Route path="/offerings/team/faq" element={<TeamOfferingsFAQPage />} />
     <Route path="/offerings/flow-series/faq" element={<FlowSeriesFAQPage />} />

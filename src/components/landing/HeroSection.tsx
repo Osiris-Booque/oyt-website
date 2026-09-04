@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { scrollToHash } from '../ScrollManager';
 import heroImage from '../../assets/Osiris_Yoga_Therapy_Hero.png';
 
 export default function Hero() {
@@ -28,13 +28,21 @@ export default function Hero() {
             An integrative practice combining yoga, breathwork, and therapy - guided by a yoga therapist dedicated to creating lasting transformation.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up delay-300">
-            <Link
-              to="#offerings"
+            <a
+              href="#offerings"
+              onClick={(e) => {
+                // Scroll imperatively: a react-router <Link> to the same hash
+                // produces no location change, so the CTA would go dead after
+                // the first click. Matches the Header's anchor-link handling.
+                e.preventDefault();
+                scrollToHash("#offerings");
+                window.history.pushState(null, "", "#offerings");
+              }}
               className="group inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-sage-600 text-white rounded-full font-semibold text-base sm:text-lg hover:bg-sage-500 transition-all duration-300 shadow-lg shadow-sage-900/30"
             >
               <span>Explore Offerings</span>
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </a>
           </div>
 
 

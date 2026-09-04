@@ -59,17 +59,6 @@ export const NAV_TEAM_HUB: NavItem[] = [
   { label: "Program FAQs", to: "/offerings/team/faq" }
 ]
 
-export const NAV_APPROACH: NavItem[] = [
-  { label: "Yoga Therapy", href: "#yoga-therapy" },
-  { label: "Breathwork", href: "#breathwork" },
-  { label: "Meditation", href: "#meditation" },
-  { label: "Conditioning", href: "#conditioning" },
-  { label: "Offerings", to: "/offerings" },
-  { label: "About", to: "/about" },
-  { label: "Blog", to: "/blog" },
-  { label: "FAQ", to: "/faq" },
-]
-
 export const NAV_ABOUT: NavItem[] = [
   { label: "Offerings", to: "/offerings" },
   { label: "Blog", to: "/blog" },

@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import { Building2, Handshake, Landmark, Monitor, MapPin, ArrowRight, CheckCircle2, Users } from "lucide-react";
 
 const WELLNESS = {
+  slug: "consulting",
   title: "Consulting",
   subtitle: "Strategic partnership for organizational wellness",
   description:
@@ -16,6 +18,7 @@ const WELLNESS = {
 };
 
 const GOVERNMENT = {
+  slug: "government",
   title: "Government",
   subtitle: "Resilience & performance for public servants",
   description:
@@ -31,6 +34,7 @@ const GOVERNMENT = {
 };
 
 const CORPORATE = {
+  slug: "corporate",
   title: "Corporate",
   subtitle: "Culture, performance, and retention",
   description:
@@ -46,6 +50,7 @@ const CORPORATE = {
 };
 
 const COMMUNITY = {
+  slug: "community",
   title: "Community",
   subtitle: "Wellness for schools & nonprofits",
   description:
@@ -117,15 +122,13 @@ function ProgramCard({ program, Icon }: { program: typeof GOVERNMENT; Icon: type
           ))}
         </ul>
 
-        <a
-          href={CALENDAR_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to={`/offerings/team/${program.slug}`}
           className="mt-auto flex items-center justify-center gap-2 w-full py-2.5 bg-sage-600 text-white rounded-lg text-sm font-semibold hover:bg-sage-500 transition"
         >
-          Request Consultation
+          Learn More
           <ArrowRight className="w-4 h-4" />
-        </a>
+        </Link>
       </div>
     </div>
   );

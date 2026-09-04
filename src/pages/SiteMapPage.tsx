@@ -47,9 +47,8 @@ const sections: SiteSection[] = [
     bgColor: "bg-teal-50",
     borderColor: "border-teal-200",
     pages: [
-      { path: "/", label: "Landing Page", description: "Hero, Offerings preview, Approach pillars, About, Testimonials, Training, Contact form" },
+      { path: "/", label: "Landing Page", description: "Hero, Offerings preview, About, Contact form" },
       { path: "/about", label: "About", description: "Values, Journey, Testimonials, Who We Serve" },
-      { path: "/approach", label: "Approach", description: "Yoga Therapy, Breathwork, Meditation, Conditioning pillars" },
       { path: "/blog", label: "Blog", description: "Articles, newsletter signup" },
       { path: "/faq", label: "FAQ", description: "Frequently asked questions" },
       { path: "/contact", label: "Contact", description: "Contact form, consultation booking" },
@@ -145,17 +144,14 @@ const sections: SiteSection[] = [
 
 const flows: FlowArrow[] = [
   { from: "/", to: "/offerings", label: "Explore Offerings (Hero CTA)", type: "cta" },
-  { from: "/", to: "/approach", label: "Learn About Our Approach", type: "cta" },
   { from: "/", to: "/offerings/team", label: "Team Growth section", type: "nav" },
   { from: "/", to: "/offerings/personal", label: "Personal Growth section", type: "nav" },
   { from: "/", to: "/about", label: "Learn more about us", type: "nav" },
 
-  { from: "/about", to: "/approach", label: "Explore our full approach", type: "cta" },
   { from: "/about", to: "/offerings/personal", label: "Explore personal programs", type: "nav" },
   { from: "/about", to: "/offerings/team", label: "Explore team programs", type: "nav" },
   { from: "/about", to: "/offerings", label: "View Offerings", type: "cta" },
 
-  { from: "/approach", to: "/offerings", label: "View Offerings", type: "cta" },
 
   { from: "/faq", to: "/contact", label: "Contact Us", type: "cta" },
   { from: "/faq", to: "/offerings", label: "Explore Offerings", type: "cta" },

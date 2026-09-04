@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { User, ArrowRight, CheckCircle2, Clock, Star, ArrowUp } from 'lucide-react';
+import { User, ArrowRight, CheckCircle2, Clock, ArrowUp } from 'lucide-react';
 
 const SESSION_TYPES = [
   {
