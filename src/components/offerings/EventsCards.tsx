@@ -30,10 +30,10 @@ const EVENTS = [
 
 export default function EventsCard() {
   return (
-    <section id="events-retreats" className="scroll-mt-0 border-t border-stone-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <section id="events-retreats" className="scroll-mt-16 sm:scroll-mt-20 border-t border-stone-200 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
 
-        <div className="flex items-start justify-between gap-3 mb-8">
+        <div className="flex items-start justify-between gap-3 mb-10 sm:mb-12">
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center shrink-0 mt-0.5">
               <CalendarDays className="w-5 h-5 text-amber-600" />

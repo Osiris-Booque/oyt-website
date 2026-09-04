@@ -57,10 +57,10 @@ export default function CohortCards() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section id="seasonal-programs" className="scroll-mt-0 border-t border-stone-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <section id="seasonal-programs" className="scroll-mt-16 sm:scroll-mt-20 border-t border-stone-200 bg-stone-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
 
-        <div className="flex items-start justify-between gap-3 mb-8">
+        <div className="flex items-start justify-between gap-3 mb-10 sm:mb-12">
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-xl bg-sage-50 flex items-center justify-center shrink-0 mt-0.5">
               <Waves className="w-5 h-5 text-sage-600" />
@@ -73,8 +73,15 @@ export default function CohortCards() {
                 Seasonal Experiences
               </h2>
               <p className="text-slate-500 text-sm mt-1 max-w-xl leading-relaxed">
-                Seasonal yoga therapy programs that run with the year. Drop in wherever you are. The cycle carries you forward. These programs have outgrown this humble space and each season now has its own dedicated website. You can visit each website to learn more using the links below. 
+                Seasonal yoga therapy programs that run with the year. Drop in wherever you are. The cycle carries you forward. These programs have outgrown this humble space and each season now has its own dedicated website. You can visit each website to learn more using the links below.
               </p>
+              <button
+                onClick={() => setModalOpen(true)}
+                className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-sage-700 hover:text-sage-900 transition-colors"
+              >
+                Sign up for email updates about the Flow Series Program
+                <ArrowRight className="w-4 h-4 shrink-0" />
+              </button>
             </div>
           </div>
           <button
@@ -129,25 +136,15 @@ export default function CohortCards() {
                 </div>
               </div>
 
-                <div className="flex flex-col gap-3">
-                  <a
-                    href={cohort.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
-                  >
-                    Visit {cohort.season} Website
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-
-                  <button
-                    onClick={() => setModalOpen(true)}
-                    className="flex items-center gap-1.5 text-left text-sm font-medium text-sage-700 hover:text-sage-900 transition-colors"
-                  >
-                    Sign up for email updates about the Flow Series Program
-                    <ArrowRight className="w-4 h-4 shrink-0" />
-                  </button>
-                </div>
+                <a
+                  href={cohort.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
+                >
+                  Visit {cohort.season} Website
+                  <ArrowRight className="w-4 h-4" />
+                </a>
             </div>
           ))}
         </div>
