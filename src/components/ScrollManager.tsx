@@ -14,7 +14,7 @@ function scrollToHash(hash: string, retries = 6, delay = 125) {
 function scrollToSection(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
-  const top = el.getBoundingClientRect().top + window.scrollY - 64;
+  const top = el.getBoundingClientRect().top + window.scrollY;
   window.scrollTo({ top, behavior: "smooth" });
 }
 
