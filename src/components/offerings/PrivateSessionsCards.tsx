@@ -68,7 +68,7 @@ export default function PrivateSessionsCard() {
                 One-on-One
               </h2>
               <p className="text-slate-500 text-sm mt-1 max-w-xl leading-relaxed">
-                These sessions are built for you. Your nervous system. Your history. Your pace. 
+                These sessions are built for you. Your nervous system. Your history. Your pace.<br /> 
                 Private sessions are {perSessionLabel(SERIES.body)} each and offered only as a complete program. Each program is one portion of the series, start with the program you feel called to most. After completing it we will discuss which feels best for you to focus on next.
               </p>
             </div>
