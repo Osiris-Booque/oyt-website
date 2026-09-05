@@ -69,6 +69,7 @@ export default function PrivateSessionsCard() {
               </h2>
               <p className="text-slate-500 text-sm mt-1 max-w-xl leading-relaxed">
                 These sessions are built for you. Your nervous system. Your history. Our pace.
+                Every private session is {perSessionLabel(SERIES.body)}.
               </p>
             </div>
           </div>
