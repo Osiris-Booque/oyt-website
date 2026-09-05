@@ -122,13 +122,30 @@ function ProgramCard({ program, Icon }: { program: typeof GOVERNMENT; Icon: type
           ))}
         </ul>
 
-        <Link
-          to={`/offerings/team/${program.slug}`}
-          className="mt-auto flex items-center justify-center gap-2 w-full py-2.5 bg-sage-600 text-white rounded-lg text-sm font-semibold hover:bg-sage-500 transition"
-        >
-          Learn More
-          <ArrowRight className="w-4 h-4" />
-        </Link>
+        {/* Two equal halves; each action is centred within its own half. The
+            button is w-2/3 of its half, i.e. a third of the card's width. */}
+        <div className="mt-auto grid grid-cols-2 items-center gap-2">
+          <div className="flex justify-center">
+            <Link
+              to={`/offerings/team/${program.slug}`}
+              className="flex items-center gap-1.5 py-3 text-sm font-semibold text-sage-700 hover:text-sage-900 transition-colors"
+            >
+              Learn more
+              <ArrowRight className="w-4 h-4 shrink-0" />
+            </Link>
+          </div>
+
+          <div className="flex justify-center">
+            <a
+              href={CALENDAR_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center text-center w-2/3 py-3 bg-sage-600 text-white rounded-lg text-sm font-semibold hover:bg-sage-500 transition"
+            >
+              Request a Consultation
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -10,7 +10,15 @@ function scrollToHash(hash: string, retries = 6, delay = 125) {
   }
 }
 
-export { scrollToHash };
+/** Scroll to a section by id, offset for the fixed 4rem header. */
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY;
+  window.scrollTo({ top, behavior: "smooth" });
+}
+
+export { scrollToHash, scrollToSection };
 
 export default function ScrollManager() {
   const { pathname, hash } = useLocation();

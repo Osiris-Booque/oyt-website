@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { User, ArrowRight, CheckCircle2, Clock, ArrowUp } from 'lucide-react';
+import SeriesPurchaseModal from '../checkout/SeriesPurchaseModal';
+import { SERIES, priceLabel, perSessionLabel } from '../../config/series';
+import type { Series } from '../../config/series';
+import { User, ArrowRight, CheckCircle2, Clock, ArrowUp, ArrowDown } from 'lucide-react';
+import { scrollToSection } from '../ScrollManager';
 
 const SESSION_TYPES = [
   {
+    series: SERIES.body,
     title: 'The Body',
-    price: 'Under $399',
     duration: '4 sessions • 35 min each',
     description:
       'A yoga therapy track for those whose relationship with their physical self is where the deepest work lives. We move through foundational somatic awareness, embodied strength, structural balance, and nervous system regulation building from the inside out.',
@@ -16,8 +21,8 @@ const SESSION_TYPES = [
     link: '/offerings/personal/the-body',
   },
   {
+    series: SERIES.mind,
     title: 'The Mind',
-    price: 'Under $299',
     duration: '3 sessions • 35 min each',
     description:
       'A yoga therapy track for those whose relationship with their emotional and mental experience is where the deepest work lives. We apply the full yoga therapy framework through the lens of somatic-emotional and somatic-cognitive awareness.',
@@ -29,8 +34,8 @@ const SESSION_TYPES = [
     link: '/offerings/personal/the-mind',
   },
   {
+    series: SERIES.soul,
     title: 'The Soul',
-    price: 'Under $399',
     duration: '4 sessions • 35 min each',
     description:
       'A yoga therapy track for those whose relationship with their energetic identity, inner dualities, and spiritual self is where the deepest work lives. We explore how the energies you carry shape how you inhabit your body and move through the world.',
@@ -44,11 +49,13 @@ const SESSION_TYPES = [
 ];
 
 export default function PrivateSessionsCard() {
-  return (
-    <section id="private-sessions" className="scroll-mt-0 border-t border-slate-200 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+  const [purchasing, setPurchasing] = useState<Series | null>(null);
 
-        <div className="flex items-start justify-between gap-3 mb-8">
+  return (
+    <section id="private-sessions" className="scroll-mt-16 sm:scroll-mt-20 border-t border-stone-200 bg-white min-h-[calc(100vh-4rem)] flex items-start">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+
+        <div className="flex items-start justify-between gap-3 mb-10 sm:mb-12">
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center shrink-0 mt-0.5">
               <User className="w-5 h-5 text-slate-600" />
@@ -61,7 +68,9 @@ export default function PrivateSessionsCard() {
                 One-on-One
               </h2>
               <p className="text-slate-500 text-sm mt-1 max-w-xl leading-relaxed">
-                These sessions are built for you. Your nervous system. Your history. Our pace.
+                These sessions are built for you. Your nervous system. Your history. Your pace.
+                <br /> 
+                Private sessions are {perSessionLabel(SERIES.body)} each and offered only as a complete program. Each program is one portion of the series, start with the program you feel called to most. After completing it we will discuss which feels best for you to focus on next.
               </p>
             </div>
           </div>
@@ -76,9 +85,8 @@ export default function PrivateSessionsCard() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {SESSION_TYPES.map((session) => (
-            <Link
+            <div
               key={session.title}
-              to={session.link}
               className="group bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col hover:border-slate-300 hover:shadow-sm transition-all"
             >
               <div className="flex items-center gap-2 mb-3">
@@ -89,7 +97,7 @@ export default function PrivateSessionsCard() {
               </div>
 
               <h3 className="text-lg font-bold text-slate-900 mb-2">{session.title}</h3>
-              <p className="text-sm font-semibold text-slate-700 mb-2">{session.price}</p>
+              <p className="text-sm font-semibold text-slate-700 mb-2">{session.series.marketingPrice}</p>
               <p className="text-sm text-slate-500 leading-relaxed mb-5 flex-grow">
                 {session.description}
               </p>
@@ -103,15 +111,53 @@ export default function PrivateSessionsCard() {
                 ))}
               </ul>
 
-              <span className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 group-hover:text-slate-900 transition-colors">
-                Learn more
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </span>
-            </Link>
+              {/* Same split as the team offering cards: two equal halves, each
+                  action centred in its own half, button a third of the card. */}
+              <div className="mt-auto grid grid-cols-2 items-center gap-2">
+                <div className="flex justify-center">
+                  <Link
+                    to={session.link}
+                    className="flex items-center gap-1.5 py-3 text-sm font-semibold text-sage-700 hover:text-sage-900 transition-colors"
+                  >
+                    Learn more
+                    <ArrowRight className="w-4 h-4 shrink-0" />
+                  </Link>
+                </div>
+              
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => setPurchasing(session.series)}
+                    className="flex items-center justify-center text-center w-2/3 py-3 bg-sage-600 text-white rounded-lg text-sm font-semibold hover:bg-sage-500 transition"
+                  >
+                    Start This Series
+                  </button>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 
+        {/* Styled in the destination section's colour so the jump is legible. */}
+        <div className="mt-14 sm:mt-20 flex justify-center">
+          <button
+            onClick={() => scrollToSection('seasonal-programs')}
+            className="inline-flex items-center gap-2 px-7 py-4 bg-sage-600 text-white rounded-xl font-semibold text-sm hover:bg-sage-500 transition-colors"
+          >
+            Check out the Flow Series
+            <ArrowDown className="w-4 h-4" />
+          </button>
+        </div>
+
       </div>
+      {purchasing && (
+        <SeriesPurchaseModal
+          onClose={() => setPurchasing(null)}
+          seriesName={purchasing.name}
+          sessionCount={purchasing.sessionCount}
+          price={priceLabel(purchasing)}
+          perSession={perSessionLabel(purchasing)}
+        />
+      )}
     </section>
   );
 }
