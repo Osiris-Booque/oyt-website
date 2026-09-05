@@ -139,7 +139,7 @@ function Modal({ onClose, seriesName, sessionCount, price, perSession }: ModalPr
           </div>
           {step === 'form' && (
             <div style={{ marginTop: 16, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-              {['Intake assessment included', 'Personalized to your body', 'Cancel 48h in advance'].map(f => (
+              {['Intake assessment included', 'Personalized to your body'].map(f => (
                 <span key={f} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, color: '#a8c4b2' }}>
                   <CheckCircle2 size={12} style={{ color: '#6dab85' }} /> {f}
                 </span>
@@ -319,26 +319,31 @@ export default function TheBodyPage() {
           overflow: 'hidden', marginBottom: 56,
           display: 'grid', gridTemplateColumns: '1fr auto',
         }}>
-          <div style={{ padding: '28px 32px' }}>
-            <p style={{ margin: '0 0 4px', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8fb09a', fontWeight: 600 }}>4-Session Series</p>
-            <h2 style={{ margin: '0 0 8px', fontSize: 22, fontWeight: 800, color: '#1e2b25' }}>The Body</h2>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, marginBottom: 20 }}>
-              {['Intake assessment included', 'Personalized to your body', 'Cancel 48h in advance', 'Phoenix Rising method'].map(f => (
-                <span key={f} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 13, color: '#5a7a6a' }}>
-                  <CheckCircle2 size={13} style={{ color: '#6dab85' }} /> {f}
+          <div style={{ padding: '40px 44px' }}>
+            <p style={{ margin: '0 0 6px', fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#6d8f7b', fontWeight: 600 }}>4-Session Series</p>
+            <h2 style={{ margin: '0 0 20px', fontSize: 30, fontWeight: 800, color: '#1e2b25' }}>The Body</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 24 }}>
+              {['Intake assessment included', 'Personalized to your body', 'Phoenix Rising method'].map(f => (
+                <span key={f} style={{ display: 'flex', alignItems: 'center', gap: 9, fontSize: 16, color: '#4a6b59' }}>
+                  <CheckCircle2 size={17} style={{ color: '#6dab85', flexShrink: 0 }} /> {f}
                 </span>
               ))}
             </div>
-            <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)}} style={{ background: '#2d3d35', color: '#fff', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer' }}>
-              Reserve your series
-            </button>
-            <p style={{ margin: '10px 0 0', fontSize: 12, color: '#a09a93' }}>You&#39;ll complete intake and scheduling after booking.</p>
+            <p style={{ margin: 0, fontSize: 15, color: '#7d8a82', lineHeight: 1.55, maxWidth: '46ch' }}>We&#39;ll contact you for intake and scheduling separately after purchasing this series.</p>
           </div>
-          <div style={{ background: '#2d3d35', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '28px 36px', minWidth: 160 }}>
-            <p style={{ margin: '0 0 4px', fontSize: 36, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em' }}>{PRICE_LABEL}</p>
-            <p style={{ margin: '0 0 8px', fontSize: 13, color: '#8fb09a' }}>total · {PER_SESSION_LABEL} per session</p>
-            <div style={{ width: 40, height: 1, background: '#3d5a49', margin: '8px 0' }} />
-            <p style={{ margin: 0, fontSize: 11, color: '#6dab85', fontWeight: 600, textAlign: 'center', lineHeight: 1.4 }}>One-time payment<br />No subscription</p>
+          <div style={{ background: '#2d3d35', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px 44px', minWidth: 280 }}>
+            <p style={{ margin: '0 0 10px', fontSize: 52, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', lineHeight: 1 }}>{PRICE_LABEL}</p>
+            <p style={{ margin: 0, fontSize: 15, color: '#8fb09a', fontWeight: 600, textAlign: 'center', lineHeight: 1.45 }}>One-time payment<br />No subscription</p>
+            <div style={{ width: 56, height: 1, background: '#3d5a49', margin: '18px 0' }} />
+            <p style={{ margin: 0, fontSize: 16, color: '#6dab85', fontWeight: 600 }}>only {PER_SESSION_LABEL} per session</p>
+            <button
+              onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true); }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#1e2b25'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#fff'; }}
+              style={{ marginTop: 24, width: '100%', background: '#6dab85', color: '#fff', border: 'none', borderRadius: 11, padding: '15px 32px', fontSize: 17, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
+            >
+              Start This Series
+            </button>
           </div>
         </div>
 
@@ -400,14 +405,18 @@ export default function TheBodyPage() {
         </div>
 
         <div style={{ background: '#2d3d35', borderRadius: 20, padding: '40px 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
-          <div>
+          <div style={{ flex: '1 1 320px', minWidth: 0 }}>
             <h3 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#fff' }}>Ready to begin?</h3>
-            <p style={{ margin: 0, fontSize: 15, color: '#a8a89e', lineHeight: 1.5 }}>Reserve your series today. Scheduling and intake happen after you book.</p>
+            <p style={{ margin: 0, fontSize: 15, color: '#a8a89e', lineHeight: 1.5 }}>We&#39;ll contact you for intake and scheduling separately after purchasing this series.</p>
           </div>
-          <div style={{ textAlign: 'right', flexShrink: 0 }}>
-            <p style={{ margin: '0 0 2px', fontSize: 28, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>{PRICE_LABEL}</p>
-            <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)}} style={{ marginTop: 10, background: '#a8d4b4', color: '#1e2b25', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
-              Reserve your series
+          <div style={{ flexShrink: 0 }}>
+            <button
+              onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true); }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#1e2b25'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#fff'; }}
+              style={{ background: '#6dab85', color: '#fff', border: 'none', borderRadius: 11, padding: '15px 32px', fontSize: 17, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
+            >
+              Start This Series
             </button>
           </div>
         </div>
