@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { User, ArrowRight, CheckCircle2, Clock, ArrowUp } from 'lucide-react';
+import { User, ArrowRight, CheckCircle2, Clock, ArrowUp, ArrowDown } from 'lucide-react';
+import { scrollToSection } from '../ScrollManager';
 
 const SESSION_TYPES = [
   {
@@ -45,8 +46,8 @@ const SESSION_TYPES = [
 
 export default function PrivateSessionsCard() {
   return (
-    <section id="private-sessions" className="scroll-mt-16 sm:scroll-mt-20 border-t border-stone-200 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
+    <section id="private-sessions" className="scroll-mt-16 sm:scroll-mt-20 border-t border-stone-200 bg-white min-h-[calc(100vh-4rem)] flex items-center">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
 
         <div className="flex items-start justify-between gap-3 mb-10 sm:mb-12">
           <div className="flex items-start gap-3">
@@ -109,6 +110,17 @@ export default function PrivateSessionsCard() {
               </span>
             </Link>
           ))}
+        </div>
+
+        {/* Styled in the destination section's colour so the jump is legible. */}
+        <div className="mt-14 sm:mt-20 flex justify-center">
+          <button
+            onClick={() => scrollToSection('seasonal-programs')}
+            className="inline-flex items-center gap-2 px-7 py-4 bg-sage-600 text-white rounded-xl font-semibold text-sm hover:bg-sage-500 transition-colors"
+          >
+            Check out the Flow Series
+            <ArrowDown className="w-4 h-4" />
+          </button>
         </div>
 
       </div>

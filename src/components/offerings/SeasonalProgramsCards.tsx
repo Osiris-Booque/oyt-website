@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { CalendarDays, ArrowRight, MapPin, Clock, ArrowUp, Waves, DollarSign } from 'lucide-react';
+import { CalendarDays, ArrowRight, MapPin, Clock, ArrowUp, Waves, DollarSign, ArrowDown } from 'lucide-react';
+import { scrollToSection } from '../ScrollManager';
 import NotifyModal from '../NotifyModal';
 
 const COHORT = [
@@ -57,8 +58,8 @@ export default function CohortCards() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section id="seasonal-programs" className="scroll-mt-16 sm:scroll-mt-20 border-t border-stone-200 bg-stone-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
+    <section id="seasonal-programs" className="scroll-mt-16 sm:scroll-mt-20 border-t border-stone-200 bg-stone-50 min-h-[calc(100vh-4rem)] flex items-center">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
 
         <div className="flex items-start justify-between gap-3 mb-10 sm:mb-12">
           <div className="flex items-start gap-3">
@@ -147,6 +148,16 @@ export default function CohortCards() {
                 </a>
             </div>
           ))}
+        </div>
+
+        <div className="mt-14 sm:mt-20 flex justify-center">
+          <button
+            onClick={() => scrollToSection('events-retreats')}
+            className="inline-flex items-center gap-2 px-7 py-4 bg-amber-600 text-white rounded-xl font-semibold text-sm hover:bg-amber-500 transition-colors"
+          >
+            Check out Events &amp; Retreats
+            <ArrowDown className="w-4 h-4" />
+          </button>
         </div>
 
       </div>
