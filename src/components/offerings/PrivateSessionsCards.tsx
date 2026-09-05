@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { User, ArrowRight, CheckCircle2, Clock, Star, ArrowUp } from 'lucide-react';
+import { User, ArrowRight, CheckCircle2, Clock, ArrowUp } from 'lucide-react';
 
 const SESSION_TYPES = [
   {
     title: 'The Body',
-    price: 'From $400',
+    price: 'Under $399',
     duration: '4 sessions • 35 min each',
     description:
       'A yoga therapy track for those whose relationship with their physical self is where the deepest work lives. We move through foundational somatic awareness, embodied strength, structural balance, and nervous system regulation building from the inside out.',
@@ -13,11 +13,11 @@ const SESSION_TYPES = [
       'Embodied strength and proprioceptive stability',
       'Parasympathetic nervous system regulation',
     ],
-    link: '/offerings/private-sessions/the-body',
+    link: '/offerings/personal/the-body',
   },
   {
     title: 'The Mind',
-    price: 'From $300',
+    price: 'Under $299',
     duration: '3 sessions • 35 min each',
     description:
       'A yoga therapy track for those whose relationship with their emotional and mental experience is where the deepest work lives. We apply the full yoga therapy framework through the lens of somatic-emotional and somatic-cognitive awareness.',
@@ -26,11 +26,11 @@ const SESSION_TYPES = [
       'Metacognitive observation of thought patterns',
       'Embodied mental and emotional yoga therapy practice',
     ],
-    link: '/offerings/private-sessions/the-mind',
+    link: '/offerings/personal/the-mind',
   },
   {
     title: 'The Soul',
-    price: 'From $400',
+    price: 'Under $399',
     duration: '4 sessions • 35 min each',
     description:
       'A yoga therapy track for those whose relationship with their energetic identity, inner dualities, and spiritual self is where the deepest work lives. We explore how the energies you carry shape how you inhabit your body and move through the world.',
@@ -39,16 +39,16 @@ const SESSION_TYPES = [
       'Somatic exploration of feminine, masculine, and Two Spirit energies',
       'Embodied soul work grounded in yoga therapy principles',
     ],
-    link: '/offerings/private-sessions/the-soul',
+    link: '/offerings/personal/the-soul',
   },
 ];
 
 export default function PrivateSessionsCard() {
   return (
-    <section id="private-sessions" className="scroll-mt-0 border-t border-slate-200 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <section id="private-sessions" className="scroll-mt-16 sm:scroll-mt-20 border-t border-stone-200 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
 
-        <div className="flex items-start justify-between gap-3 mb-8">
+        <div className="flex items-start justify-between gap-3 mb-10 sm:mb-12">
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center shrink-0 mt-0.5">
               <User className="w-5 h-5 text-slate-600" />

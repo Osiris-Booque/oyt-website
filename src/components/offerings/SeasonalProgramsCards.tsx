@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { CalendarDays, ArrowRight, MapPin, Clock, Users, ArrowUp, Waves, DollarSign } from 'lucide-react';
+import { CalendarDays, ArrowRight, MapPin, Clock, ArrowUp, Waves, DollarSign } from 'lucide-react';
 import NotifyModal from '../NotifyModal';
 
 const COHORT = [
@@ -14,10 +13,7 @@ const COHORT = [
     sessions: '6 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
     price: '1200',
-    spotsLeft: 0,
-    link: '/purchase-summer-flow',
-    linkLabel: 'Register Now',
-    useModal: false,
+    url: 'https://flowthroughsummer.com',
   },
   {
     season: 'Fall',
@@ -29,10 +25,7 @@ const COHORT = [
     sessions: '8 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
     price: '1200',
-    spotsLeft: 12,
-    link: '/notify',
-    linkLabel: 'Join Early-Access List',
-    useModal: true,
+    url: 'https://flowthroughfall.com',
   },
   {
     season: 'Spring',
@@ -44,10 +37,7 @@ const COHORT = [
     sessions: '8 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
     price: '1200',
-    spotsLeft: 12,
-    link: '/notify',
-    linkLabel: 'Join Early-Access List',
-    useModal: true,
+    url: 'https://flowintospring.com',
   },
   {
     season: 'Winter',
@@ -59,10 +49,7 @@ const COHORT = [
     sessions: '8 weeks · Sundays 4–6pm PST',
     location: 'Remote (Zoom)',
     price: '1200',
-    spotsLeft: 12,
-    link: '/notify',
-    linkLabel: 'Join Early-Access List',
-    useModal: true,
+    url: 'https://flowthroughwinter.com',
   },
 ];
 
@@ -70,10 +57,10 @@ export default function CohortCards() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section id="seasonal-programs" className="scroll-mt-0 border-t border-stone-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <section id="seasonal-programs" className="scroll-mt-16 sm:scroll-mt-20 border-t border-stone-200 bg-stone-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
 
-        <div className="flex items-start justify-between gap-3 mb-8">
+        <div className="flex items-start justify-between gap-3 mb-10 sm:mb-12">
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-xl bg-sage-50 flex items-center justify-center shrink-0 mt-0.5">
               <Waves className="w-5 h-5 text-sage-600" />
@@ -86,8 +73,15 @@ export default function CohortCards() {
                 Seasonal Experiences
               </h2>
               <p className="text-slate-500 text-sm mt-1 max-w-xl leading-relaxed">
-                Seasonal yoga therapy programs that run with the year. Drop in wherever you are. The cycle carries you forward. These programs have outgrown this humble space and each season now has its own dedicated website. You can visit each website to learn more using the links below. 
+                Seasonal yoga therapy programs that run with the year. Drop in wherever you are. The cycle carries you forward. These programs have outgrown this humble space and each season now has its own dedicated website. You can visit each website to learn more using the links below.
               </p>
+              <button
+                onClick={() => setModalOpen(true)}
+                className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-sage-700 hover:text-sage-900 transition-colors"
+              >
+                Sign up for email updates about the Flow Series Program
+                <ArrowRight className="w-4 h-4 shrink-0" />
+              </button>
             </div>
           </div>
           <button
@@ -99,7 +93,7 @@ export default function CohortCards() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {COHORT.map((cohort) => (
             <div
               key={cohort.theme}
@@ -127,7 +121,7 @@ export default function CohortCards() {
                 {cohort.modality}
               </p>
 
-              <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                 <div className="flex items-start gap-2">
                   <CalendarDays className="w-4 h-4 text-stone-400 mt-0.5 shrink-0" />
                   <span className="text-xs text-slate-600">{cohort.dates}</span>
@@ -140,53 +134,19 @@ export default function CohortCards() {
                   <Clock className="w-4 h-4 text-stone-400 mt-0.5 shrink-0" />
                   <span className="text-xs text-slate-600">{cohort.sessions}</span>
                 </div>
-                <div className="flex items-start gap-2">
-                  <Users className="w-4 h-4 text-stone-400 mt-0.5 shrink-0" />
-                  <span className="text-xs text-slate-600">
-                    {cohort.spotsLeft === 0 ? 'Sold out' : `${cohort.spotsLeft} spots left`}
-                  </span>
-                </div>
               </div>
 
-                {cohort.useModal ? (
-                  <button
-                    onClick={() => setModalOpen(true)}
-                    className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
-                  >
-                    {cohort.linkLabel}
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                ) : cohort.spotsLeft === 0 ? (
-                  <span className="flex items-center gap-1.5 text-sm font-semibold text-slate-400 cursor-not-allowed">
-                    Sold Out
-                  </span>
-                ) : (
-                  <Link
-                    to={cohort.link}
-                    className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
-                  >
-                    {cohort.linkLabel}
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                )}
+                <a
+                  href={cohort.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
+                >
+                  Visit {cohort.season} Website
+                  <ArrowRight className="w-4 h-4" />
+                </a>
             </div>
           ))}
-        </div>
-
-        <div className="border border-stone-200 rounded-2xl px-6 sm:px-8 py-6 flex flex-col sm:flex-row sm:items-center gap-5">
-          <div className="flex-grow">
-            <h4 className="font-bold text-slate-900 mb-1">Be the first to know</h4>
-            <p className="text-sm text-slate-500">
-              Cohorts fill quickly and are announced to our community first. Join our early-access list.
-            </p>
-          </div>
-          <button
-            onClick={() => setModalOpen(true)}
-            className="flex items-center gap-2 px-5 py-3 border border-slate-900 text-slate-900 rounded-xl font-semibold text-sm hover:bg-slate-900 hover:text-white transition-colors shrink-0"
-          >
-            Contact Us
-            <ArrowRight className="w-4 h-4" />
-          </button>
         </div>
 
       </div>

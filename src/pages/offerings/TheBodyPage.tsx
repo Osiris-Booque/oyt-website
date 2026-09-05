@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { CSSProperties } from 'react';
 import { User, Clock, MessageCircle, CheckCircle2, Star, X, Phone, Mail, MessageSquare } from 'lucide-react';
 
 const SESSIONS = [
@@ -21,24 +22,39 @@ const TESTIMONIALS = [
   { name: 'Priya S.', quote: 'Not like any yoga class I\'ve taken before. This feels like working with someone who actually sees you.', stars: 5 },
 ];
 
-const labelStyle = {
+// Single source of truth for this series' pricing. Change PER_SESSION (or
+// SESSION_COUNT) and every price on the page and in the modal follows.
+const SERIES_NAME = 'The Body';
+const SESSION_COUNT = 4;
+const PER_SESSION = 85;
+const TOTAL = SESSION_COUNT * PER_SESSION;
+const PRICE_LABEL = `$${TOTAL}`;
+const PER_SESSION_LABEL = `$${PER_SESSION}`;
+
+const HERO_META = [
+  { Icon: Clock, text: '35 min sessions' },
+  { Icon: User, text: '1:1 with your instructor' },
+  { Icon: MessageCircle, text: 'Virtual via Zoom' },
+];
+
+const labelStyle: CSSProperties = {
   display: 'block', fontSize: 11, fontWeight: 600, letterSpacing: '0.08em',
   textTransform: 'uppercase', color: '#7a7470', marginBottom: 5,
 };
 
-const inputStyle = {
+const inputStyle: CSSProperties = {
   width: '100%', boxSizing: 'border-box', padding: '10px 12px',
   borderRadius: 9, border: '1.5px solid #d8d3cc', background: '#fff',
   fontSize: 14, color: '#1e2b25', outline: 'none',
 };
 
-const ctaStyle = {
+const ctaStyle: CSSProperties = {
   width: '100%', padding: '14px', background: '#2d3d35', color: '#fff',
   border: 'none', borderRadius: 11, fontSize: 15, fontWeight: 700,
   cursor: 'pointer', letterSpacing: '0.01em',
 };
 
-function Stars({ count }) {
+function Stars({ count }: { count: number }) {
   return (
     <div style={{ display: 'flex', gap: 2 }}>
       {Array.from({ length: count }).map((_, i) => (
@@ -48,16 +64,24 @@ function Stars({ count }) {
   );
 }
 
-function Modal({ onClose, seriesName, sessionCount, price, perSession }) {
+type ModalProps = {
+  onClose: () => void;
+  seriesName: string;
+  sessionCount: number;
+  price: string;
+  perSession: string;
+};
+
+function Modal({ onClose, seriesName, sessionCount, price, perSession }: ModalProps) {
   const [step, setStep] = useState('form');
-  const [contact, setContact] = useState([]);
+  const [contact, setContact] = useState<string[]>([]);
   const [cardNum, setCardNum] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
   const [cardName, setCardName] = useState('');
   const [processing, setProcessing] = useState(false);
 
-  const toggleContact = (val) =>
+  const toggleContact = (val: string) =>
     setContact(prev => prev.includes(val) ? prev.filter(v => v !== val) : [...prev, val]);
 
   const handlePay = () => {
@@ -65,8 +89,8 @@ function Modal({ onClose, seriesName, sessionCount, price, perSession }) {
     setTimeout(() => { setProcessing(false); setStep('success'); }, 1800);
   };
 
-  const formatCard = (val) => val.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
-  const formatExpiry = (val) => {
+  const formatCard = (val: string) => val.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
+  const formatExpiry = (val: string) => {
     const d = val.replace(/\D/g, '').slice(0, 4);
     return d.length >= 3 ? d.slice(0, 2) + ' / ' + d.slice(2) : d;
   };
@@ -258,7 +282,7 @@ export default function TheBodyPage() {
 
   return (
     <div style={{ fontFamily: "'Inter', system-ui, sans-serif", background: '#faf9f6', color: '#1e2b25', minHeight: '100vh' }}>
-      {modalOpen && <Modal onClose={() => setModalOpen(false)} seriesName="The Body" sessionCount={4} price="$340" perSession="$85" />}
+      {modalOpen && <Modal onClose={() => setModalOpen(false)} seriesName={SERIES_NAME} sessionCount={SESSION_COUNT} price={PRICE_LABEL} perSession={PER_SESSION_LABEL} />}
 
       <section style={{ position: 'relative', minHeight: 380, overflow: 'hidden' }}>
         <img
@@ -278,7 +302,7 @@ export default function TheBodyPage() {
             A 4-session yoga therapy series for people whose relationship with their physical self is where the deepest work lives.
           </p>
           <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-            {[[Clock, '35 min sessions'], [User, '1:1 with your instructor'], [MessageCircle, 'Virtual via Zoom']].map(([Icon, text]) => (
+            {HERO_META.map(({ Icon, text }) => (
               <span key={text} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: '#a8c4b2' }}>
                 <Icon size={14} /> {text}
               </span>
@@ -311,8 +335,8 @@ export default function TheBodyPage() {
             <p style={{ margin: '10px 0 0', fontSize: 12, color: '#a09a93' }}>You&#39;ll complete intake and scheduling after booking.</p>
           </div>
           <div style={{ background: '#2d3d35', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '28px 36px', minWidth: 160 }}>
-            <p style={{ margin: '0 0 4px', fontSize: 36, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em' }}>$340</p>
-            <p style={{ margin: '0 0 8px', fontSize: 13, color: '#8fb09a' }}>total · $85 per session</p>
+            <p style={{ margin: '0 0 4px', fontSize: 36, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em' }}>{PRICE_LABEL}</p>
+            <p style={{ margin: '0 0 8px', fontSize: 13, color: '#8fb09a' }}>total · {PER_SESSION_LABEL} per session</p>
             <div style={{ width: 40, height: 1, background: '#3d5a49', margin: '8px 0' }} />
             <p style={{ margin: 0, fontSize: 11, color: '#6dab85', fontWeight: 600, textAlign: 'center', lineHeight: 1.4 }}>One-time payment<br />No subscription</p>
           </div>
@@ -381,7 +405,7 @@ export default function TheBodyPage() {
             <p style={{ margin: 0, fontSize: 15, color: '#a8a89e', lineHeight: 1.5 }}>Reserve your series today. Scheduling and intake happen after you book.</p>
           </div>
           <div style={{ textAlign: 'right', flexShrink: 0 }}>
-            <p style={{ margin: '0 0 2px', fontSize: 28, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>$340</p>
+            <p style={{ margin: '0 0 2px', fontSize: 28, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>{PRICE_LABEL}</p>
             <button onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true)}} style={{ marginTop: 10, background: '#a8d4b4', color: '#1e2b25', border: 'none', borderRadius: 11, padding: '13px 28px', fontSize: 15, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
               Reserve your series
             </button>

@@ -31,7 +31,7 @@ A full-stack web platform for a yoga therapy and wellness coaching business. The
 
 Osiris Yoga Therapy is built to support the full lifecycle of a wellness business:
 
-- **Attract** clients through a polished marketing site with offerings, testimonials, and an approach philosophy
+- **Attract** clients through a polished marketing site with offerings, program detail pages, and an about section
 - **Convert** visitors into enrolled students via Stripe-powered checkout flows
 - **Deliver** structured cohort programs with milestones, journaling prompts, daily homework, and live Zoom sessions
 - **Engage** the community through a forum with posts, comments, and reactions, plus direct messaging between members and instructors
@@ -62,19 +62,20 @@ src/
 ├── assets/                   # Static images and brand assets
 ├── components/
 │   ├── admin/                # Admin layout and route protection
-│   ├── checkout/             # Stripe payment form, purchase summary, payment link iframe
+│   ├── checkout/             # Stripe payment link iframe, purchase summary
 │   ├── context/              # AuthContext provider and type definitions
 │   ├── dashboard/            # Member dashboard layout with sidebar navigation
 │   ├── instructor/           # Instructor layout and route protection
-│   ├── landing/              # Landing page sections (hero, offerings, approach, etc.)
+│   ├── landing/              # Landing page sections (hero, offerings, about, contact)
 │   ├── layout/               # Header and Footer shared across layouts
+│   ├── offerings/            # Offerings cards + shared TeamProgramLayout
 │   └── ui/                   # ProtectedRoute guard and LoadingSpinner
 ├── config/
 │   ├── cta.ts                # Call-to-action button definitions
 │   ├── header.ts             # Route-specific header configurations
 │   ├── nav.ts                # Navigation item sets for each page context
 │   └── personalization.ts    # Dynamic CTA resolution based on user context
-├── layouts/                  # Page layout wrappers (Landing, Marketing, Offerings, etc.)
+├── layouts/                  # Page layout wrappers (Landing, Marketing, Offerings, About)
 ├── lib/
 │   ├── constants.ts          # Roles, categories, reaction types, utility functions
 │   ├── csvProgram.ts         # Program CSV import parser
@@ -85,11 +86,13 @@ src/
 │   ├── checkout/             # Checkout and registration pages
 │   ├── dashboard/            # Member pages (home, calendar, booking, community, etc.)
 │   ├── instructor/           # Instructor pages (home, programs, calendar, availability)
-│   └── offerings/            # Offerings hub, personal, team, Flow Series
+│   └── offerings/
+│       ├── team/             # Team program detail pages (consulting, government, ...)
+│       └── *.tsx             # Offerings hub, personal, team, Flow Series, private sessions
 └── router/
     ├── AppRouter.tsx          # Root router with all route groups
     ├── marketingRoutes.tsx    # Public pages
-    ├── offeringsRoutes.tsx    # Offerings and checkout routes
+    ├── offeringsRoutes.tsx    # Offerings, team programs, and checkout routes
     ├── dashboardRoutes.tsx    # Protected member routes
     ├── instructorRoutes.tsx   # Protected instructor routes
     └── adminRoutes.tsx        # Protected admin routes
@@ -97,12 +100,17 @@ src/
 supabase/
 ├── functions/
 │   ├── admin-user-management/  # Create and delete users (admin-only)
+│   ├── delete-account/         # Self-service account deletion
 │   ├── import-program-csv/     # Bulk import programs with milestones and prompts
 │   ├── stripe-checkout/        # Create and confirm Stripe PaymentIntents
 │   ├── stripe-webhook/         # Process Stripe webhook events
 │   └── sync-google-calendar/   # Connect and sync Google Calendar availability
-└── migrations/                 # 30+ database migration files
+└── migrations/                 # 40+ database migration files
 ```
+
+> **Routing note.** Vite has no file-based routing: a file's location in `src/pages/`
+> is convention only. `src/router/*.tsx` is the single source of truth mapping a URL
+> to a component, and is the fastest way to find the file behind any page.
 
 ---
 
@@ -112,8 +120,7 @@ supabase/
 
 | Page | Path | Description |
 |------|------|-------------|
-| Landing | `/` | Hero, offerings showcase, approach, testimonials, about, and contact sections |
-| Approach | `/approach` | Yoga therapy methodology: breathwork, meditation, conditioning |
+| Landing | `/` | Hero, offerings showcase, about, and contact sections |
 | About | `/about` | Mission, values, team, and journey |
 | Blog | `/blog` | Articles and wellness content |
 | FAQ | `/faq` | Frequently asked questions |
@@ -132,16 +139,37 @@ The platform serves three categories of offerings:
 - Includes milestones, journaling prompts, daily homework, community access, and certificates
 - Limited enrollment capacity
 
-**Personal Offerings**
-- 1:1 private sessions with instructors
-- Live events and retreats
-- Self-paced recorded programs
+**Personal Offerings** (`/offerings/personal`)
 
-**Team Offerings**
-- Government agency programs (resilience, burnout prevention, leadership)
-- Corporate wellness (executive coaching, team mindfulness, quarterly immersion days)
-- Community wellness (schools, nonprofits, trauma-informed programming)
-- Delivery options: virtual, in-person, and hybrid
+The landing page for all personal offerings, organized into three sections:
+
+1. **Private Sessions** -- three 1:1 yoga therapy tracks, each with its own detail page:
+   | Page | Path |
+   |------|------|
+   | The Body | `/offerings/personal/the-body` |
+   | The Mind | `/offerings/personal/the-mind` |
+   | The Soul | `/offerings/personal/the-soul` |
+2. **Seasonal Programs** -- each season now has its own dedicated website; the tiles
+   link out to `flowthroughsummer.com`, `flowthroughfall.com`, `flowintospring.com`,
+   and `flowthroughwinter.com`. Each tile also opens the Flow Series email-announcement
+   modal (`NotifyModal`).
+3. **Events & Retreats** -- placeholder content, intentionally left as-is.
+
+**Team Offerings** (`/offerings/team`)
+
+Four engagement types, each with a detail page. All four share a single presentational
+component (`components/offerings/TeamProgramLayout.tsx`) and differ only in content, so
+the layout is edited in one place:
+
+| Page | Path |
+|------|------|
+| Wellness Consulting | `/offerings/team/consulting` |
+| Government Agency Programs | `/offerings/team/government` |
+| Corporate Wellness Programs | `/offerings/team/corporate` |
+| Community Wellness Programs | `/offerings/team/community` |
+
+Delivery options: virtual, in-person, and hybrid. Every team page CTA routes to the
+external Google Calendar consultation booking link.
 
 ### Member Dashboard
 
@@ -250,13 +278,16 @@ All tables enforce Row Level Security (RLS) with policies scoped to ownership, r
 
 ## Edge Functions
 
-Five Supabase Edge Functions handle server-side operations:
+Six Supabase Edge Functions handle server-side operations:
 
 ### `stripe-checkout`
 Creates and confirms Stripe PaymentIntents for program enrollment. Validates the user is not already enrolled, processes the payment, and records it in the database.
 
 ### `stripe-webhook`
 Processes incoming Stripe webhook events (`checkout.session.completed`, `payment_intent.succeeded`) to keep payment and subscription records in sync.
+
+### `delete-account`
+Allows an authenticated user to delete their own account and associated profile data.
 
 ### `admin-user-management`
 Provides admin-only endpoints for creating new user accounts (with optional role assignment) and deleting existing users through the Supabase Admin Auth API.
@@ -271,17 +302,27 @@ Connects instructor accounts to Google Calendar via OAuth, then syncs calendar e
 
 ## Payments & Stripe Integration
 
-The checkout flow supports two modes:
+The Flow Series cohort checkout uses a **Stripe-hosted payment page**, embedded via
+`StripePaymentLinkIframe`. Card details are never collected by this application, which
+keeps the project in the lightest PCI scope (SAQ-A).
 
-**Custom Payment Form**
-1. Member selects a program and proceeds to checkout
-2. `StripePaymentForm` collects card details via Stripe Elements
-3. The `stripe-checkout` edge function creates and confirms a PaymentIntent
-4. On success, a `payments` record is created with status `paid`
-5. Enrollment is gated by a database constraint that requires a confirmed payment
+Supporting server-side pieces exist for a fuller integration:
 
-**Stripe Payment Link**
-An alternative `StripePaymentLinkIframe` component embeds a Stripe-hosted checkout page for simplified payment collection.
+- `stripe-checkout` -- creates and confirms PaymentIntents
+- `stripe-webhook` -- reconciles `checkout.session.completed` and `payment_intent.succeeded`
+- Enrollment is gated by a database constraint requiring a confirmed payment
+
+> ### ⚠️ Known gap: the private-session purchase modal is a prototype
+>
+> The purchase modal on `/offerings/personal/the-body`, `/the-mind`, and `/the-soul`
+> (defined inline in each `The*Page.tsx`) is **not connected to Stripe**. It renders
+> card inputs, waits 1.8s on a `setTimeout`, and then displays a success message. No
+> payment is taken and no record is written.
+>
+> It is retained deliberately while the site is unreleased and receiving no traffic.
+> **It must be replaced with a Stripe-hosted payment link before launch** -- both
+> because it reports false confirmations and because collecting raw card fields in the
+> page would otherwise widen PCI scope well beyond SAQ-A.
 
 Payment status workflow: `pending` -> `paid` | `failed`
 
@@ -294,19 +335,18 @@ Payment status workflow: `pending` -> `paid` | `failed`
 | Group | Base Path | Layout | Protection |
 |-------|-----------|--------|-----------|
 | Marketing | `/` | LandingLayout, MarketingLayout | Public |
-| Offerings | `/offerings/*`, `/checkout/*`, `/contact` | OfferingsLayout | Public |
+| Offerings | `/offerings/*`, `/offerings/team/*`, `/checkout/*`, `/contact` | OfferingsLayout | Public |
 | Dashboard | `/dashboard/*` | DashboardLayout | Authenticated |
 | Instructor | `/instructor/*` | InstructorLayout | Instructor or Admin role |
 | Admin | `/admin/*` | AdminLayout | Admin role |
 
 ### Layout System
 
-Five layout wrappers control the page chrome (header, footer, background):
+Four layout wrappers control the page chrome (header, footer, background):
 
 - **LandingLayout** -- Landing page with frosted header and stone background
 - **MarketingLayout** -- Standard pages (login, signup, blog, FAQ)
-- **OfferingsLayout** -- Smart header that adapts navigation based on the current offerings sub-path
-- **ApproachLayout** -- Approach methodology page
+- **OfferingsLayout** -- Smart header that adapts navigation based on the current offerings sub-path (offerings hub, personal hub, private-session pages, team hub, team program pages, Flow Series, contact)
 - **AboutLayout** -- About us page
 
 All layouts share the same `Header` and `Footer` components, configured via the header configuration system.

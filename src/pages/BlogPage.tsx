@@ -1,5 +1,4 @@
 import { ArrowRight, Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const featuredPost = {
   title: 'Why Breathwork Is the Missing Piece in Your Wellness Routine',

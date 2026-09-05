@@ -1,14 +1,11 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import { HEADER_CONFIG } from "../config/header";
 
 export default function landing() {
 
-  const location = useLocation();
-  const path = location.pathname;
-
-  let headerConfig = HEADER_CONFIG.landing;
+  const headerConfig = HEADER_CONFIG.landing;
 
   return (
     <div className="min-h-screen flex flex-col">

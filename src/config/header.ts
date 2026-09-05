@@ -7,7 +7,7 @@ import {
   NAV_PERSONAL_FAQ,
   NAV_PRIVATE_SESSION,
   NAV_TEAM_HUB,
-  NAV_APPROACH,
+  NAV_TEAM_PROGRAM,
   NAV_ABOUT,
   NAV_CONTACT,
   NAV_FLOW_SERIES
@@ -64,18 +64,18 @@ export const HEADER_CONFIG = {
     hideCurrentPage: true
   },
 
+  teamProgram: {
+    style: "frosted",
+    navItems: NAV_TEAM_PROGRAM,
+    cta: "none",
+    hideCurrentPage: false
+  },
+
   teamHub: {
     style: "frosted",
     navItems: NAV_TEAM_HUB,
     cta: "bookConsultation",
     hideCurrentPage: true
-  },
-
-  approach: {
-    style: "frosted",
-    navItems: NAV_APPROACH,
-    cta: "default",
-    hideCurrentPage: false
   },
 
   about: {

@@ -49,25 +49,22 @@ export const NAV_PERSONAL_FAQ: NavItem[] = [
 
 export const NAV_PRIVATE_SESSION: NavItem[] = [
   { label: "Back to Private Session Offerings", to: "/offerings/personal#private-sessions", isBack: true },
-  { label: "The Body", to: "/offerings/private-sessions/the-body" },
-  { label: "The Mind", to: "/offerings/private-sessions/the-mind" },
-  { label: "The Soul", to: "/offerings/private-sessions/the-soul" },
+  { label: "The Body", to: "/offerings/personal/the-body" },
+  { label: "The Mind", to: "/offerings/personal/the-mind" },
+  { label: "The Soul", to: "/offerings/personal/the-soul" },
+]
+
+export const NAV_TEAM_PROGRAM: NavItem[] = [
+  { label: "Back to Team Offerings", to: "/offerings/team", isBack: true },
+  { label: "Consulting", to: "/offerings/team/consulting" },
+  { label: "Government", to: "/offerings/team/government" },
+  { label: "Corporate", to: "/offerings/team/corporate" },
+  { label: "Community", to: "/offerings/team/community" },
 ]
 
 export const NAV_TEAM_HUB: NavItem[] = [
   { label: "Back to all Offerings", href: "/#offerings", isBack: true },
   { label: "Program FAQs", to: "/offerings/team/faq" }
-]
-
-export const NAV_APPROACH: NavItem[] = [
-  { label: "Yoga Therapy", href: "#yoga-therapy" },
-  { label: "Breathwork", href: "#breathwork" },
-  { label: "Meditation", href: "#meditation" },
-  { label: "Conditioning", href: "#conditioning" },
-  { label: "Offerings", to: "/offerings" },
-  { label: "About", to: "/about" },
-  { label: "Blog", to: "/blog" },
-  { label: "FAQ", to: "/faq" },
 ]
 
 export const NAV_ABOUT: NavItem[] = [

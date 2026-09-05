@@ -47,9 +47,8 @@ const sections: SiteSection[] = [
     bgColor: "bg-teal-50",
     borderColor: "border-teal-200",
     pages: [
-      { path: "/", label: "Landing Page", description: "Hero, Offerings preview, Approach pillars, About, Testimonials, Training, Contact form" },
+      { path: "/", label: "Landing Page", description: "Hero, Offerings preview, About, Contact form" },
       { path: "/about", label: "About", description: "Values, Journey, Testimonials, Who We Serve" },
-      { path: "/approach", label: "Approach", description: "Yoga Therapy, Breathwork, Meditation, Conditioning pillars" },
       { path: "/blog", label: "Blog", description: "Articles, newsletter signup" },
       { path: "/faq", label: "FAQ", description: "Frequently asked questions" },
       { path: "/contact", label: "Contact", description: "Contact form, consultation booking" },
@@ -69,7 +68,14 @@ const sections: SiteSection[] = [
       { path: "/offerings/personal", label: "Personal Offerings", description: "Individual programs, Flow Series highlight" },
       { path: "/offerings/team", label: "Team Offerings", description: "Government, Corporate, Community programs" },
       { path: "/offerings/flow-series", label: "Flow Series Detail", description: "Full program details, curriculum, pricing" },
+      { path: "/offerings/personal/the-body", label: "The Body", description: "Private session track — somatic awareness, strength, nervous system regulation" },
+      { path: "/offerings/personal/the-mind", label: "The Mind", description: "Private session track — somatic-emotional and metacognitive work" },
+      { path: "/offerings/personal/the-soul", label: "The Soul", description: "Private session track — energetic identity and inner dualities" },
       { path: "/offerings/personal/faq", label: "Personal FAQ", description: "Program-specific questions" },
+      { path: "/offerings/team/consulting", label: "Wellness Consulting", description: "Leadership-level advisory and framework design" },
+      { path: "/offerings/team/government", label: "Government Programs", description: "Resilience and performance for public servants" },
+      { path: "/offerings/team/corporate", label: "Corporate Wellness", description: "Executive coaching, team mindfulness, immersion days" },
+      { path: "/offerings/team/community", label: "Community Wellness", description: "Schools, nonprofits, and community organizations" },
       { path: "/offerings/team/faq", label: "Team FAQ", description: "Team program questions" },
     ],
   },
@@ -142,17 +148,14 @@ const sections: SiteSection[] = [
 
 const flows: FlowArrow[] = [
   { from: "/", to: "/offerings", label: "Explore Offerings (Hero CTA)", type: "cta" },
-  { from: "/", to: "/approach", label: "Learn About Our Approach", type: "cta" },
   { from: "/", to: "/offerings/team", label: "Team Growth section", type: "nav" },
   { from: "/", to: "/offerings/personal", label: "Personal Growth section", type: "nav" },
   { from: "/", to: "/about", label: "Learn more about us", type: "nav" },
 
-  { from: "/about", to: "/approach", label: "Explore our full approach", type: "cta" },
   { from: "/about", to: "/offerings/personal", label: "Explore personal programs", type: "nav" },
   { from: "/about", to: "/offerings/team", label: "Explore team programs", type: "nav" },
   { from: "/about", to: "/offerings", label: "View Offerings", type: "cta" },
 
-  { from: "/approach", to: "/offerings", label: "View Offerings", type: "cta" },
 
   { from: "/faq", to: "/contact", label: "Contact Us", type: "cta" },
   { from: "/faq", to: "/offerings", label: "Explore Offerings", type: "cta" },
@@ -163,7 +166,23 @@ const flows: FlowArrow[] = [
   { from: "/offerings/personal", to: "/checkout/spring-cohort/register", label: "Enroll Now", type: "cta" },
   { from: "/offerings/personal", to: "/offerings/flow-series", label: "Learn More", type: "nav" },
 
+  { from: "/offerings/personal", to: "/offerings/personal/the-body", label: "The Body card", type: "nav" },
+  { from: "/offerings/personal", to: "/offerings/personal/the-mind", label: "The Mind card", type: "nav" },
+  { from: "/offerings/personal", to: "/offerings/personal/the-soul", label: "The Soul card", type: "nav" },
+  { from: "/offerings/personal", to: "external:flowthroughsummer.com", label: "Summer season site", type: "external" },
+  { from: "/offerings/personal", to: "external:flowthroughfall.com", label: "Fall season site", type: "external" },
+  { from: "/offerings/personal", to: "external:flowintospring.com", label: "Spring season site", type: "external" },
+  { from: "/offerings/personal", to: "external:flowthroughwinter.com", label: "Winter season site", type: "external" },
+
+  { from: "/offerings/team", to: "/offerings/team/consulting", label: "Consulting card", type: "nav" },
+  { from: "/offerings/team", to: "/offerings/team/government", label: "Government card", type: "nav" },
+  { from: "/offerings/team", to: "/offerings/team/corporate", label: "Corporate card", type: "nav" },
+  { from: "/offerings/team", to: "/offerings/team/community", label: "Community card", type: "nav" },
   { from: "/offerings/team", to: "external:calendar", label: "Book a Consultation", type: "external" },
+  { from: "/offerings/team/consulting", to: "external:calendar", label: "Inquire About Consulting", type: "external" },
+  { from: "/offerings/team/government", to: "external:calendar", label: "Request a Consultation", type: "external" },
+  { from: "/offerings/team/corporate", to: "external:calendar", label: "Request a Consultation", type: "external" },
+  { from: "/offerings/team/community", to: "external:calendar", label: "Request a Consultation", type: "external" },
 
   { from: "/offerings/flow-series", to: "/checkout/spring-cohort/pay", label: "Enroll Now -- $1200", type: "cta" },
   { from: "/offerings/flow-series", to: "/login", label: "Already have an account?", type: "nav" },

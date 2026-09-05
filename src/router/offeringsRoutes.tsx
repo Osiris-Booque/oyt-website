@@ -10,13 +10,12 @@ const TheBodyPage = lazy(() => import("../pages/offerings/TheBodyPage"));
 const TheMindPage = lazy(() => import("../pages/offerings/TheMindPage"));
 const TheSoulPage = lazy(() => import("../pages/offerings/TheSoulPage"));
 const PersonalOfferingsFAQPage = lazy(() => import("../pages/offerings/PersonalOfferingsFAQPage"));
+const ConsultingPage = lazy(() => import("../pages/offerings/team/ConsultingPage"));
+const GovernmentPage = lazy(() => import("../pages/offerings/team/GovernmentPage"));
+const CorporatePage = lazy(() => import("../pages/offerings/team/CorporatePage"));
+const CommunityPage = lazy(() => import("../pages/offerings/team/CommunityPage"));
 const TeamOfferingsFAQPage = lazy(() => import("../pages/offerings/TeamOfferingsFAQPage"));
 const FlowSeriesFAQPage = lazy(() => import("../pages/offerings/FlowSeriesFAQPage"));
-// const PurchaseWinterFlow = lazy(() => import("../pages/checkout/PurchaseWinterFlow"));
-// const PurchaseSpringFlow = lazy(() => import("../pages/checkout/PurchaseSpringFlow"));
-// const PurchaseSummerFlow = lazy(() => import("../pages/checkout/PurchaseSummerFlow"));
-// const PurchaseFallFlow = lazy(() => import("../pages/checkout/PurchaseFallFlow"));
-// const NotifyPage = lazy(() => import("../pages/NotifyPage"));
 const ContactPage = lazy(() => import("../pages/ContactPage"));
 const CheckoutPage = lazy(() => import("../pages/checkout/CheckoutPage"));
 const SpringCohortCheckout = lazy(() => import("../pages/checkout/SpringCohortCheckout"));
@@ -28,20 +27,21 @@ export const offeringsRoutes = (
     <Route path="/offerings/personal" element={<PersonalOfferingsPage />} />
     <Route path="/offerings/team" element={<TeamOfferingsPage />} />
     <Route path="/offerings/flow-series" element={<FlowSeriesPage />} />
-    <Route path="/offerings/private-sessions/the-body" element={<TheBodyPage />} />
-    <Route path="/offerings/private-sessions/the-mind" element={<TheMindPage />} />
-    <Route path="/offerings/private-sessions/the-soul" element={<TheSoulPage />} />
+    {/* Private-session detail pages — src/pages/offerings/The*Page.tsx */}
+    <Route path="/offerings/personal/the-body" element={<TheBodyPage />} />
+    <Route path="/offerings/personal/the-mind" element={<TheMindPage />} />
+    <Route path="/offerings/personal/the-soul" element={<TheSoulPage />} />
     <Route path="/offerings/personal/faq" element={<PersonalOfferingsFAQPage />} />
     <Route path="/offerings/team/faq" element={<TeamOfferingsFAQPage />} />
+
+    {/* Team program detail pages — src/pages/offerings/team/*.tsx */}
+    <Route path="/offerings/team/consulting" element={<ConsultingPage />} />
+    <Route path="/offerings/team/government" element={<GovernmentPage />} />
+    <Route path="/offerings/team/corporate" element={<CorporatePage />} />
+    <Route path="/offerings/team/community" element={<CommunityPage />} />
     <Route path="/offerings/flow-series/faq" element={<FlowSeriesFAQPage />} />
-    {/* <Route path="/purchase-winter-flow" element={<PurchaseWinterFlow />} /> */}
-    {/* <Route path="/purchase-spring-flow" element={<PurchaseSpringFlow />} /> */}
-    {/* <Route path="/purchase-summer-flow" element={<PurchaseSummerFlow />} /> */}
-    {/* <Route path="/purchase-fall-flow" element={<PurchaseFallFlow />} /> */}
-    {/* <Route path="/notify" element={<NotifyPage />} /> */}
     <Route path="/contact" element={<ContactPage />} />
     <Route path="/checkout/:programSlug" element={<CheckoutPage />} />
-    <Route path="/checkout/spring-cohort" element={<SpringCohortRegister />} />
     <Route path="/checkout/spring-cohort/register" element={<SpringCohortRegister />} />
     <Route path="/checkout/spring-cohort/pay" element={<SpringCohortCheckout />} />
   </Route>
