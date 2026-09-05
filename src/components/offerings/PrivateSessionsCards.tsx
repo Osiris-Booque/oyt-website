@@ -110,21 +110,27 @@ export default function PrivateSessionsCard() {
                 ))}
               </ul>
 
-              <div className="mt-auto flex flex-col gap-3">
-                <Link
-                  to={session.link}
-                  className="flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
-                >
-                  Learn more
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-
-                <button
-                  onClick={() => setPurchasing(session.series)}
-                  className="w-full py-3 bg-sage-600 text-white rounded-xl text-sm font-semibold hover:bg-sage-500 transition-colors"
-                >
-                  Purchase This Series
-                </button>
+              {/* Same split as the team offering cards: two equal halves, each
+                  action centred in its own half, button a third of the card. */}
+              <div className="mt-auto grid grid-cols-2 items-center gap-2">
+                <div className="flex justify-center">
+                  <Link
+                    to={session.link}
+                    className="flex items-center gap-1.5 py-3 text-sm font-semibold text-sage-700 hover:text-sage-900 transition-colors"
+                  >
+                    Learn more
+                    <ArrowRight className="w-4 h-4 shrink-0" />
+                  </Link>
+                </div>
+              
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => setPurchasing(session.series)}
+                    className="flex items-center justify-center text-center w-2/3 py-3 bg-sage-600 text-white rounded-lg text-sm font-semibold hover:bg-sage-500 transition"
+                  >
+                    Start This Series
+                  </button>
+                </div>
               </div>
             </div>
           ))}
