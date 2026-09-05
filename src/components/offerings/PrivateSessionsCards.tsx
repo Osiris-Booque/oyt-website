@@ -69,6 +69,7 @@ export default function PrivateSessionsCard() {
               </h2>
               <p className="text-slate-500 text-sm mt-1 max-w-xl leading-relaxed">
                 These sessions are built for you. Your nervous system. Your history. Your pace.
+                <br />
                 <br /> 
                 Private sessions are {perSessionLabel(SERIES.body)} each and offered only as a complete program. Each program is one portion of the series, start with the program you feel called to most. After completing it we will discuss which feels best for you to focus on next.
               </p>
@@ -117,7 +118,8 @@ export default function PrivateSessionsCard() {
                 <div className="flex justify-center">
                   <Link
                     to={session.link}
-                    className="flex items-center gap-1.5 py-3 text-sm font-semibold text-sage-700 hover:text-sage-900 transition-colors"
+                    className="flex items-center gap-1.5 py-3 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
+
                   >
                     Learn more
                     <ArrowRight className="w-4 h-4 shrink-0" />
@@ -127,7 +129,7 @@ export default function PrivateSessionsCard() {
                 <div className="flex justify-center">
                   <button
                     onClick={() => setPurchasing(session.series)}
-                    className="flex items-center justify-center text-center w-2/3 py-3 bg-sage-600 text-white rounded-lg text-sm font-semibold hover:bg-sage-500 transition"
+                    className="flex items-center justify-center text-center w-full py-3 bg-slate-800 text-white rounded-lg text-sm font-semibold hover:bg-slate-700 transition"
                   >
                     Start This Series
                   </button>
