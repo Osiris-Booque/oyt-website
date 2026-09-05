@@ -58,7 +58,7 @@ export default function CohortCards() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section id="seasonal-programs" className="scroll-mt-16 sm:scroll-mt-20 border-t border-stone-200 bg-stone-50 min-h-[calc(100vh-4rem)] flex items-center">
+    <section id="seasonal-programs" className="scroll-mt-16 sm:scroll-mt-20 border-t border-stone-200 bg-stone-50 min-h-[calc(100vh-4rem)] flex items-start">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
 
         <div className="flex items-start justify-between gap-3 mb-10 sm:mb-12">
