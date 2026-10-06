@@ -46,6 +46,9 @@ export default function PrivateSessionsCard() {
               </h2>
               <p className="text-slate-500 text-sm mt-2 max-w-xl leading-relaxed">
                 These sessions are built for you. Your nervous system. Your history. Your pace.
+                <br />
+                <br /> 
+                Private sessions are {perSessionLabel(SERIES.body)} each and offered only as a complete program. Each program is one portion of the series, start with the program you feel called to most. After completing it we will discuss which feels best for you to focus on next.
               </p>
             </div>
           </div>
@@ -67,34 +70,36 @@ export default function PrivateSessionsCard() {
           <div className="bg-slate-900 text-white px-6 sm:px-10 py-8 sm:py-10">
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
 
-              <div className="max-w-2xl">
-                <div className="flex items-center gap-2 mb-3">
-                  <Layers className="w-4 h-4 text-slate-400" />
-                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest">
-                    Private Yoga Therapy Program
-                  </span>
+              <ul className="space-y-2 mb-6">
+                {session.highlights.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm text-slate-600">
+                    <CheckCircle2 className="w-4 h-4 text-slate-400 mt-0.5 shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Same split as the team offering cards: two equal halves, each
+                  action centred in its own half, button a third of the card. */}
+              <div className="mt-auto grid grid-cols-2 items-center gap-2">
+                <div className="flex justify-center">
+                  <Link
+                    to={session.link}
+                    className="flex items-center gap-1.5 py-3 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
+
+                  >
+                    Learn more
+                    <ArrowRight className="w-4 h-4 shrink-0" />
+                  </Link>
                 </div>
-
-                <h3 className="text-2xl sm:text-3xl font-bold leading-tight mb-3 text-white">
-                  {PROGRAM.name}
-                </h3>
-
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-5">
-                  One program, three focal points, {PROGRAM.sessionCount} sessions. Every session
-                  works the same three strands — movement, probing questions, and concepts to
-                  implement — and each pass takes them deeper. You finish with awareness you
-                  did not have, movement your body remembers, and conclusions you reached yourself.
-                </p>
-
-                <div className="flex flex-wrap gap-x-6 gap-y-2">
-                  <span className="flex items-center gap-2 text-sm text-slate-300">
-                    <Clock className="w-4 h-4 text-slate-500 shrink-0" />
-                    {PROGRAM.sessionCount} sessions &middot; {PROGRAM.sessionMinutes} min each
-                  </span>
-                  <span className="flex items-center gap-2 text-sm text-slate-300">
-                    <CheckCircle2 className="w-4 h-4 text-slate-500 shrink-0" />
-                    {totalDurationLabel()} of 1:1 practice
-                  </span>
+              
+                <div className="flex justify-center">
+                  <button
+                    onClick={() => setPurchasing(session.series)}
+                    className="flex items-center justify-center text-center w-full py-3 bg-slate-800 text-white rounded-lg text-sm font-semibold hover:bg-slate-700 transition"
+                  >
+                    Start This Series
+                  </button>
                 </div>
               </div>
 
