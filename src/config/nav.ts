@@ -49,6 +49,7 @@ export const NAV_PERSONAL_FAQ: NavItem[] = [
 
 export const NAV_PRIVATE_SESSION: NavItem[] = [
   { label: "Back to Private Session Offerings", to: "/offerings/personal#private-sessions", isBack: true },
+  { label: "Phase 0", to: "/offerings/personal/program" },
   { label: "The Body", to: "/offerings/personal/the-body" },
   { label: "The Mind", to: "/offerings/personal/the-mind" },
   { label: "The Soul", to: "/offerings/personal/the-soul" },

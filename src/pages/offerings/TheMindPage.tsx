@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import SeriesPurchaseModal from '../../components/checkout/SeriesPurchaseModal';
-import { SERIES, priceLabel, perSessionLabel } from '../../config/series';
-import { User, Clock, MessageCircle, CheckCircle2, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { PROGRAM, FOCAL_POINTS, FOCAL_POINT_LIST } from '../../config/series';
+import { User, MessageCircle, CheckCircle2, Star } from 'lucide-react';
+
+const FOCAL = FOCAL_POINTS.mind;
+const OTHER_FOCAL = FOCAL_POINT_LIST.filter(f => f.key !== FOCAL.key);
 
 const SESSIONS = [
   { num: 1, title: 'Befriending the Body', desc: 'The mind and body are not separate systems. Neuroscience confirms that cognitive and emotional processing are deeply entangled with somatic experience. This opening session establishes that somatic foundation, developing interoceptive awareness and the capacity to sense internal states with precision and compassion.' },
@@ -23,14 +25,8 @@ const TESTIMONIALS = [
   { name: 'Priya S.', quote: "Not like any yoga class I've taken before. This feels like working with someone who actually sees you.", stars: 5 },
 ];
 
-const SERIES_CONFIG = SERIES.mind;
-const SERIES_NAME = SERIES_CONFIG.name;
-const SESSION_COUNT = SERIES_CONFIG.sessionCount;
-const PRICE_LABEL = priceLabel(SERIES_CONFIG);
-const PER_SESSION_LABEL = perSessionLabel(SERIES_CONFIG);
 
 const HERO_META = [
-  { Icon: Clock, text: '35 min sessions' },
   { Icon: User, text: '1:1 with your instructor' },
   { Icon: MessageCircle, text: 'Virtual via Zoom' },
 ];
@@ -46,11 +42,9 @@ function Stars({ count }: { count: number }) {
 }
 
 export default function TheMindPage() {
-  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div style={{ fontFamily: "'Inter', system-ui, sans-serif", background: '#faf9f6', color: '#1e2b25', minHeight: '100vh' }}>
-      {modalOpen && <SeriesPurchaseModal onClose={() => setModalOpen(false)} seriesName={SERIES_NAME} sessionCount={SESSION_COUNT} price={PRICE_LABEL} perSession={PER_SESSION_LABEL} />}
 
       <section style={{ position: 'relative', minHeight: 380, overflow: 'hidden' }}>
         <img
@@ -63,7 +57,7 @@ export default function TheMindPage() {
           <p style={{ margin: '0 0 12px', fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#8fb09a', fontWeight: 600 }}>Private Sessions · Osiris Yoga Therapy</p>
           <h1 style={{ margin: '0 0 14px', fontSize: 'clamp(38px,6vw,64px)', fontWeight: 800, color: '#fff', lineHeight: 1.05, letterSpacing: '-0.02em' }}>The Mind</h1>
           <p style={{ margin: '0 0 28px', fontSize: 17, color: '#c5d9cc', maxWidth: 480, lineHeight: 1.6 }}>
-            A 3-session yoga therapy series for people whose relationship with their emotional and mental experience is where the deepest work lives.
+            One of three focal points explored across Phase 0, for those whose relationship with their emotional and mental experience is where the deepest work lives.
           </p>
           <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
             {HERO_META.map(({ Icon, text }) => (
@@ -77,8 +71,9 @@ export default function TheMindPage() {
 
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 24px 80px' }}>
         <div style={{ marginTop: -28, position: 'relative', zIndex: 10, background: '#fff', borderRadius: 20, boxShadow: '0 4px 32px rgba(18,30,24,0.10)', overflow: 'hidden', marginBottom: 56, display: 'grid', gridTemplateColumns: '1fr auto' }}>
-          <div style={{ padding: '40px 44px' }}>
-            <p style={{ margin: '0 0 6px', fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#6d8f7b', fontWeight: 600 }}>3-Session Series</p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 40, padding: '40px 44px', alignItems: 'start' }}>
+          <div>
+            <p style={{ margin: '0 0 6px', fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#6d8f7b', fontWeight: 600 }}>Focal point &middot; Phase 0</p>
             <h2 style={{ margin: '0 0 20px', fontSize: 30, fontWeight: 800, color: '#1e2b25' }}>The Mind</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 24 }}>
               {['Intake assessment included', 'Personalized to your body', 'Phoenix Rising method'].map(f => (
@@ -87,21 +82,24 @@ export default function TheMindPage() {
                 </span>
               ))}
             </div>
-            <p style={{ margin: 0, fontSize: 15, color: '#7d8a82', lineHeight: 1.55, maxWidth: '46ch' }}>We&#39;ll contact you for intake and scheduling separately after purchasing this series.</p>
+            <p style={{ margin: '0 0 22px', fontSize: 15, color: '#7d8a82', lineHeight: 1.55, maxWidth: '46ch' }}>This focal point is explored as part of Phase 0 — it is not booked separately. Pricing, structure, and enrolment all live on the program page.</p>
+            <Link to={PROGRAM.path} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#2d3d35', color: '#fff', borderRadius: 11, padding: '14px 28px', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
+              See {PROGRAM.name} &rarr;
+            </Link>
           </div>
-          <div style={{ background: '#2d3d35', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px 44px', minWidth: 280 }}>
-            <p style={{ margin: '0 0 10px', fontSize: 52, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', lineHeight: 1 }}>{PRICE_LABEL}</p>
-            <p style={{ margin: 0, fontSize: 15, color: '#8fb09a', fontWeight: 600, textAlign: 'center', lineHeight: 1.45 }}>One-time payment<br />No subscription</p>
-            <div style={{ width: 56, height: 1, background: '#3d5a49', margin: '18px 0' }} />
-            <p style={{ margin: 0, fontSize: 16, color: '#6dab85', fontWeight: 600 }}>only {PER_SESSION_LABEL} per session</p>
-            <button
-              onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true); }}
-              onMouseEnter={e => { e.currentTarget.style.color = '#1e2b25'; }}
-              onMouseLeave={e => { e.currentTarget.style.color = '#fff'; }}
-              style={{ marginTop: 24, width: '100%', background: '#6dab85', color: '#fff', border: 'none', borderRadius: 11, padding: '15px 32px', fontSize: 17, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
-            >
-              Start This Series
-            </button>
+
+          <div style={{ borderLeft: '1px solid #e8e3db', paddingLeft: 36, minWidth: 220 }}>
+            <p style={{ margin: '0 0 14px', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8fb09a', fontWeight: 600 }}>Also in {PROGRAM.name}</p>
+            {OTHER_FOCAL.map(o => (
+              <Link key={o.key} to={o.path} style={{ display: 'block', marginBottom: 16, textDecoration: 'none' }}>
+                <p style={{ margin: '0 0 2px', fontSize: 16, fontWeight: 700, color: '#2d3d35' }}>{o.name} &rarr;</p>
+                <p style={{ margin: 0, fontSize: 13, color: '#7d8a82' }}>{o.lens}</p>
+              </Link>
+            ))}
+            <p style={{ margin: '20px 0 0', fontSize: 13, color: '#7d8a82', lineHeight: 1.5 }}>
+              All three are explored across the same {PROGRAM.sessionCount} sessions.
+            </p>
+          </div>
           </div>
         </div>
 
@@ -131,14 +129,11 @@ export default function TheMindPage() {
         </div>
 
         <div style={{ marginBottom: 56 }}>
-          <p style={{ margin: '0 0 10px', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8fb09a', fontWeight: 600 }}>What&#39;s included</p>
-          <h2 style={{ margin: '0 0 24px', fontSize: 26, fontWeight: 800 }}>Your three sessions</h2>
+          <p style={{ margin: '0 0 10px', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8fb09a', fontWeight: 600 }}>Within the program</p>
+          <h2 style={{ margin: '0 0 24px', fontSize: 26, fontWeight: 800 }}>What this focal point explores</h2>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
             {SESSIONS.map(s => (
               <div key={s.title} style={{ background: '#fff', border: '1.5px solid #e8e3db', borderRadius: 14, padding: '20px 22px', display: 'flex', gap: 16 }}>
-                <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#eef4f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 800, color: '#2d3d35', flexShrink: 0 }}>
-                  {s.num}
-                </div>
                 <div>
                   <p style={{ margin: '0 0 5px', fontSize: 15, fontWeight: 700, color: '#1e2b25' }}>{s.title}</p>
                   <p style={{ margin: 0, fontSize: 13, color: '#5a7a6a', lineHeight: 1.55 }}>{s.desc}</p>
@@ -165,17 +160,15 @@ export default function TheMindPage() {
         <div style={{ background: '#2d3d35', borderRadius: 20, padding: '40px 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 320px', minWidth: 0 }}>
             <h3 style={{ margin: '0 0 6px', fontSize: 22, fontWeight: 800, color: '#fff' }}>Ready to begin?</h3>
-            <p style={{ margin: 0, fontSize: 15, color: '#a8a89e', lineHeight: 1.5 }}>We&#39;ll contact you for intake and scheduling separately after purchasing this series.</p>
+            <p style={{ margin: 0, fontSize: 15, color: '#a8a89e', lineHeight: 1.5 }}>This focal point is one of three explored across Phase 0. Pricing and enrolment are on the program page.</p>
           </div>
           <div style={{ flexShrink: 0 }}>
-            <button
-              onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setModalOpen(true); }}
-              onMouseEnter={e => { e.currentTarget.style.color = '#1e2b25'; }}
-              onMouseLeave={e => { e.currentTarget.style.color = '#fff'; }}
-              style={{ background: '#6dab85', color: '#fff', border: 'none', borderRadius: 11, padding: '15px 32px', fontSize: 17, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'color 0.2s' }}
+            <Link
+              to={PROGRAM.path}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#6dab85', color: '#fff', borderRadius: 11, padding: '15px 32px', fontSize: 17, fontWeight: 700, whiteSpace: 'nowrap', textDecoration: 'none' }}
             >
-              Start This Series
-            </button>
+              See {PROGRAM.name} &rarr;
+            </Link>
           </div>
         </div>
       </div>
