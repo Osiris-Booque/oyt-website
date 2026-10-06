@@ -11,6 +11,7 @@ const TEAM_PROGRAM_PATHS = [
 ];
 
 const PRIVATE_SESSION_PATHS = [
+  "/offerings/personal/program",
   "/offerings/personal/the-body",
   "/offerings/personal/the-mind",
   "/offerings/personal/the-soul",

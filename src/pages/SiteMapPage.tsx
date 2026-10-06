@@ -68,9 +68,10 @@ const sections: SiteSection[] = [
       { path: "/offerings/personal", label: "Personal Offerings", description: "Individual programs, Flow Series highlight" },
       { path: "/offerings/team", label: "Team Offerings", description: "Government, Corporate, Community programs" },
       { path: "/offerings/flow-series", label: "Flow Series Detail", description: "Full program details, curriculum, pricing" },
-      { path: "/offerings/personal/the-body", label: "The Body", description: "Private session track — somatic awareness, strength, nervous system regulation" },
-      { path: "/offerings/personal/the-mind", label: "The Mind", description: "Private session track — somatic-emotional and metacognitive work" },
-      { path: "/offerings/personal/the-soul", label: "The Soul", description: "Private session track — energetic identity and inner dualities" },
+      { path: "/offerings/personal/program", label: "Phase 0", description: "The 4-session private yoga therapy program — pricing, structure, approach, outcomes" },
+      { path: "/offerings/personal/the-body", label: "The Body", description: "Phase 0 focal point — somatic awareness, strength, nervous system regulation" },
+      { path: "/offerings/personal/the-mind", label: "The Mind", description: "Phase 0 focal point — somatic-emotional and metacognitive work" },
+      { path: "/offerings/personal/the-soul", label: "The Soul", description: "Phase 0 focal point — energetic identity and inner dualities" },
       { path: "/offerings/personal/faq", label: "Personal FAQ", description: "Program-specific questions" },
       { path: "/offerings/team/consulting", label: "Wellness Consulting", description: "Leadership-level advisory and framework design" },
       { path: "/offerings/team/government", label: "Government Programs", description: "Resilience and performance for public servants" },
@@ -166,6 +167,7 @@ const flows: FlowArrow[] = [
   { from: "/offerings/personal", to: "/checkout/spring-cohort/register", label: "Enroll Now", type: "cta" },
   { from: "/offerings/personal", to: "/offerings/flow-series", label: "Learn More", type: "nav" },
 
+  { from: "/offerings/personal", to: "/offerings/personal/program", label: "See the full program", type: "cta" },
   { from: "/offerings/personal", to: "/offerings/personal/the-body", label: "The Body card", type: "nav" },
   { from: "/offerings/personal", to: "/offerings/personal/the-mind", label: "The Mind card", type: "nav" },
   { from: "/offerings/personal", to: "/offerings/personal/the-soul", label: "The Soul card", type: "nav" },
@@ -186,6 +188,13 @@ const flows: FlowArrow[] = [
 
   { from: "/offerings/flow-series", to: "/checkout/spring-cohort/pay", label: "Enroll Now -- $1200", type: "cta" },
   { from: "/offerings/flow-series", to: "/login", label: "Already have an account?", type: "nav" },
+
+  { from: "/offerings/personal/program", to: "/offerings/personal/the-body", label: "Explore The Body", type: "nav" },
+  { from: "/offerings/personal/program", to: "/offerings/personal/the-mind", label: "Explore The Mind", type: "nav" },
+  { from: "/offerings/personal/program", to: "/offerings/personal/the-soul", label: "Explore The Soul", type: "nav" },
+  { from: "/offerings/personal/the-body", to: "/offerings/personal/program", label: "See Phase 0", type: "cta" },
+  { from: "/offerings/personal/the-mind", to: "/offerings/personal/program", label: "See Phase 0", type: "cta" },
+  { from: "/offerings/personal/the-soul", to: "/offerings/personal/program", label: "See Phase 0", type: "cta" },
 
   { from: "/offerings/personal/faq", to: "/faq", label: "Visit Help Center", type: "nav" },
   { from: "/offerings/personal/faq", to: "/contact", label: "Contact Us", type: "cta" },

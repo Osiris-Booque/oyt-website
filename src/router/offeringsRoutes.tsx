@@ -6,6 +6,7 @@ const OfferingsPage = lazy(() => import("../pages/offerings/OfferingsPage"));
 const PersonalOfferingsPage = lazy(() => import("../pages/offerings/PersonalOfferingsPage"));
 const TeamOfferingsPage = lazy(() => import("../pages/offerings/TeamOfferingsPage"));
 const FlowSeriesPage = lazy(() => import("../pages/offerings/FlowSeriesPage"));
+const ProgramPage = lazy(() => import("../pages/offerings/ProgramPage"));
 const TheBodyPage = lazy(() => import("../pages/offerings/TheBodyPage"));
 const TheMindPage = lazy(() => import("../pages/offerings/TheMindPage"));
 const TheSoulPage = lazy(() => import("../pages/offerings/TheSoulPage"));
@@ -27,7 +28,10 @@ export const offeringsRoutes = (
     <Route path="/offerings/personal" element={<PersonalOfferingsPage />} />
     <Route path="/offerings/team" element={<TeamOfferingsPage />} />
     <Route path="/offerings/flow-series" element={<FlowSeriesPage />} />
-    {/* Private-session detail pages — src/pages/offerings/The*Page.tsx */}
+    {/* Phase 0 program page — src/pages/offerings/ProgramPage.tsx */}
+    <Route path="/offerings/personal/program" element={<ProgramPage />} />
+
+    {/* Focal point pages (informational) — src/pages/offerings/The*Page.tsx */}
     <Route path="/offerings/personal/the-body" element={<TheBodyPage />} />
     <Route path="/offerings/personal/the-mind" element={<TheMindPage />} />
     <Route path="/offerings/personal/the-soul" element={<TheSoulPage />} />
