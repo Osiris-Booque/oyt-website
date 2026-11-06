@@ -93,17 +93,17 @@ const DELIVERY = [
 ];
 const CALENDAR_URL = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1HZ43X9NOvJz834TvyIRoJS6rrPvTHxRDCiOwqWtngAL-YC3ZkXiU716kFjkglgZmCtYJ1PKF_";
 
-function ProgramCard({ program, Icon }: { program: typeof GOVERNMENT; Icon: typeof Building2 }) {
+function ProgramCard({ program, Icon, featured = false }: { program: typeof GOVERNMENT; Icon: typeof Building2; featured?: boolean }) {
   return (
-    <div className="bg-white rounded-2xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col">
-      <div className="relative h-48 overflow-hidden">
+    <div className={`bg-white rounded-2xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col ${featured ? "md:flex-row" : ""}`}>
+      <div className={`relative overflow-hidden ${featured ? "h-48 md:h-auto md:w-2/5" : "h-48"}`}>
         <img src={program.image} alt={program.title} className="w-full h-full object-cover" />
         <div className="absolute bottom-4 left-4 w-10 h-10 rounded-lg bg-white flex items-center justify-center">
           <Icon className="w-5 h-5 text-sage-600" />
         </div>
       </div>
 
-      <div className="p-6 flex flex-col flex-grow">
+      <div className={`p-6 flex flex-col flex-grow ${featured ? "md:p-8" : ""}`}>
         <h3 className="text-xl font-bold text-slate-900 mb-1">
           {program.title}
         </h3>
@@ -113,7 +113,7 @@ function ProgramCard({ program, Icon }: { program: typeof GOVERNMENT; Icon: type
 
         <p className="text-slate-500 text-sm mb-4">{program.description}</p>
 
-        <ul className="space-y-2 mb-6">
+        <ul className={`space-y-2 mb-6 ${featured ? "md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-2 md:space-y-0" : ""}`}>
           {program.features.map((f: string) => (
             <li key={f} className="flex gap-2 text-xs text-slate-600">
               <CheckCircle2 className="w-4 h-4 text-sage-600 mt-0.5" />
@@ -124,7 +124,7 @@ function ProgramCard({ program, Icon }: { program: typeof GOVERNMENT; Icon: type
 
         {/* Two equal halves; each action is centred within its own half. The
             button is w-2/3 of its half, i.e. a third of the card's width. */}
-        <div className="mt-auto grid grid-cols-2 items-center gap-2">
+        <div className={`mt-auto grid grid-cols-2 items-center gap-2 ${featured ? "md:max-w-xl" : ""}`}>
           <div className="flex justify-center">
             <Link
               to={`/offerings/team/${program.slug}`}
@@ -160,7 +160,7 @@ export default function TeamOfferingsPage() {
 
         <section
           id="about"
-          className="max-w-7xl mx-auto px-6 pb-20"
+          className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pb-20"
         >
           <p className="text-sage-700 uppercase tracking-widest text-lg mb-2">
             Team Growth & Wellness
@@ -176,11 +176,16 @@ export default function TeamOfferingsPage() {
             communication.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <ProgramCard program={WELLNESS} Icon={Handshake} />
-            <ProgramCard program={GOVERNMENT} Icon={Landmark} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <ProgramCard program={CORPORATE} Icon={Building2} />
+            <ProgramCard program={GOVERNMENT} Icon={Landmark} />
             <ProgramCard program={COMMUNITY} Icon={Users} />
+          </div>
+
+          {/* Consulting sits on its own row below the three delivery programs,
+              as a full-width featured card. On mobile it stacks last. */}
+          <div className="mt-6">
+            <ProgramCard program={WELLNESS} Icon={Handshake} featured />
           </div>
         </section>
       </div>
